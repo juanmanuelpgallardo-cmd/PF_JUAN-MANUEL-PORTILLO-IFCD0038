@@ -1,180 +1,86 @@
-# PPF Gastronomía - Template Astro Profesional
+# The Walkers | Street Food Fusión de Autor
 
-Template moderno y profesional de Astro para negocios hosteleros. Incluye secciones completas y componentes reutilizables.
+Web oficial de **The Walkers**, un concepto de street food fusión con técnica de autor. Rolls fusión, tacos asiáticos, burgers gourmet y bowls.
 
-## 📋 Características
+## Características
 
-✅ **Diseño Responsive** - Funciona perfectamente en móviles, tablets y desktops  
-✅ **Performance Optimizado** - Astro proporciona carga rápida y eficiente  
-✅ **Componentes Reutilizables** - Cards, Header, Footer, Reviews  
-✅ **Estilos Modernos** - CSS limpio con variables de diseño  
-✅ **SEO Friendly** - Meta tags y estructura semántica  
-✅ **Animaciones Suaves** - Transiciones profesionales  
-✅ **Accesibilidad** - Cumple con estándares WCAG  
+- **Diseño Responsive** - Funciona en móviles, tablets y escritorio
+- **Performance Optimizado** - Astro genera HTML estático ultra rápido
+- **Componentes Reutilizables** - Card, Header, Footer, Hero, Reviews, Menu, OrderForm, Merchandising
+- **Estilos Modernos** - CSS con variables de diseño y Tailwind CSS
+- **SEO Friendly** - Meta tags descriptivos y estructura semántica
+- **Accesibilidad** - Contraste suficiente, navegación por teclado, prefers-reduced-motion
 
-## 🎨 Secciones Incluidas
+## Secciones
 
-1. **Header con Navegación** - Menú pegajoso con enlaces suave
-2. **Hero Section** - Banner llamativo con imagen y CTA
-3. **Servicios (4 Cards)** - Grid responsivo de servicios
-4. **Testimonios/Reviews** - Sección de valoraciones de clientes
-5. **Footer Completo** - Información de contacto y enlaces
+1. **Header** - Navegación sticky con efecto blur y enlaces a secciones
+2. **Hero** - Video de fondo fullscreen con overlay y CTA
+3. **Esencia** - 4 pilares de la marca con iconos SVG
+4. **Carta/Menú** - Filtro dinámico por categorías (platos estrella, degustación, grupos, para llevar)
+5. **Merchandising** - Tienda de productos de la marca con filtro por categorías
+6. **Reviews** - Testimonios reales con estrellas y avatares
+7. **OrderForm** - Formulario de pedido con 3 modalidades: pedir ahora, reservar grupo, degustación
+8. **Footer** - Información de contacto, horarios, enlaces y redes sociales
+9. **FloatingCTA** - Botón flotante "¡PIDE YA!" con animación
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
-PPF_Nombre_Apellido/
+PF_JUAN-MANUEL-PORTILLO-IFCD0038/
 ├── src/
 │   ├── components/
-│   │   ├── Header.astro          # Navegación principal
-│   │   ├── Hero.astro            # Sección hero
-│   │   ├── Card.astro            # Componente card reutilizable
-│   │   ├── Services.astro        # Sección servicios con 4 cards
-│   │   ├── Reviews.astro         # Sección testimonios
-│   │   └── Footer.astro          # Pie de página
+│   │   ├── Header.astro       # Navegación principal
+│   │   ├── Hero.astro         # Hero con video de fondo
+│   │   ├── Card.astro         # Card reutilizable
+│   │   ├── Esencia.astro      # Pilares de la marca
+│   │   ├── Services.astro     # Servicios (legacy)
+│   │   ├── Menu.astro         # Carta con filtro dinámico
+│   │   ├── Merchandising.astro# Tienda de productos
+│   │   ├── Reviews.astro      # Testimonios
+│   │   ├── OrderForm.astro    # Formulario de pedido
+│   │   ├── Footer.astro       # Pie de página
+│   │   └── FloatingCTA.astro  # Botón flotante CTA
 │   ├── layouts/
-│   │   └── MainLayout.astro      # Layout base
+│   │   └── MainLayout.astro   # Layout base con Header/Footer
 │   ├── pages/
-│   │   └── index.astro           # Página principal
+│   │   └── index.astro        # Página principal (one-page)
 │   └── styles/
-│       └── global.css            # Estilos globales y variables
-├── public/                        # Assets estáticos
-├── astro.config.mjs              # Configuración de Astro
-├── package.json                  # Dependencias
-└── README.md                      # Este archivo
+│       └── global.css         # Variables CSS y estilos globales
+├── public/                    # Assets estáticos (favicon, imágenes)
+├── astro.config.mjs           # Configuración de Astro + Tailwind
+├── package.json               # Dependencias y scripts
+├── tailwind.config.js         # Configuración de Tailwind
+└── README.md                  # Este archivo
 ```
 
-## 🚀 Primeros Pasos
+## Primeros Pasos
 
-### 1. Instalar dependencias
 ```bash
-cd PPF_Nombre_Apellido
 npm install
+npm run dev        # Servidor de desarrollo
+npm run build      # Compilar para producción
+npm run preview    # Preview de la versión compilada
 ```
 
-### 2. Ejecutar servidor de desarrollo
-```bash
-npm run dev
-```
-La web estará disponible en `http://localhost:3000`
+## Personalización
 
-### 3. Compilar para producción
-```bash
-npm run build
-```
+### Paleta de Colores
 
-### 4. Preview de la versión compilada
-```bash
-npm run preview
-```
+| Variable CSS | Color | Uso |
+|---|---|---|
+| `--walkerDark` / `--color-negro-carbon` | `#121212` | Fondo principal |
+| `--walkerCard` / `--color-gris-asfalto` | `#1E1E1E` | Superficies/tarjetas |
+| `--walkerOrange` / `--color-naranja-fuego` | `#FF4A1C` | Acento principal |
+| `--walkerCyan` / `--color-azul-electrico` | `#00E5FF` | Acento secundario |
 
-## 🎯 Personalización
+### Tipografía
 
-### Cambiar Colores
-Edita las variables en `src/styles/global.css`:
+- **Titulares**: Bebas Neue (uppercase, display)
+- **Cuerpo**: Montserrat (300-800 weight)
 
-```css
-:root {
-  --color-primary: #2563eb;      /* Azul principal */
-  --color-secondary: #f97316;    /* Naranja acento */
-  --color-accent: #06b6d4;       /* Cian */
-  /* ... más variables */
-}
-```
+## Tecnologías
 
-### Actualizar Contenido
-- **Header**: Edita `src/components/Header.astro`
-- **Hero**: Edita `src/components/Hero.astro`
-- **Servicios**: Edita el array en `src/components/Services.astro`
-- **Testimonios**: Edita el array en `src/components/Reviews.astro`
-- **Footer**: Edita `src/components/Footer.astro`
-
-### Cambiar Imágenes
-Reemplaza las URLs de `unsplash.com` por tus propias imágenes. Todas están en atributos `src` en los componentes.
-
-## 🖼️ Placeholders de Imágenes
-
-El template usa placeholders de **Unsplash** y **Picsum Photos**:
-- Máximo 100x100px: `https://images.unsplash.com/photo-ID?w=100&h=100&fit=crop`
-- Máximo 300x300px: `https://images.unsplash.com/photo-ID?w=300&h=300&fit=crop`
-- Máximo 600x600px: `https://images.unsplash.com/photo-ID?w=600&h=600&fit=crop`
-
-Para usar tus propias imágenes:
-1. Crea carpeta `public/images/`
-2. Sube tus imágenes
-3. Referencia como: `/images/tu-imagen.jpg`
-
-## 🎨 Paleta de Colores
-
-| Variable | Color | Uso |
-|----------|-------|-----|
-| `--color-primary` | #2563eb | Principal |
-| `--color-primary-dark` | #1e40af | Hover primario |
-| `--color-secondary` | #f97316 | Secundario/Acento |
-| `--color-accent` | #06b6d4 | Detalles |
-| `--color-dark` | #1f2937 | Texto oscuro |
-| `--color-gray-light` | #f3f4f6 | Fondos claros |
-| `--color-white` | #ffffff | Blanco |
-
-## 📱 Responsividad
-
-El template es 100% responsivo con breakpoints en:
-- **768px**: Tablets
-- **480px**: Móviles pequeños
-
-Todos los componentes se adaptan automáticamente.
-
-## ⚡ Optimizaciones Incluidas
-
-✅ Lazy loading de imágenes  
-✅ Google Fonts optimizado  
-✅ CSS minificado  
-✅ HTML semántico  
-✅ Mobile-first approach  
-✅ Respecta preferencias de reducción de movimiento  
-
-## 🔗 URLs Importantes
-
-- **Documentación de Astro**: https://docs.astro.build
-- **Unsplash para imágenes**: https://unsplash.com
-- **Google Fonts**: https://fonts.google.com
-
-## 💡 Tips de Personalización
-
-### Agregar nueva sección
-1. Crear componente en `src/components/NuevaSeccion.astro`
-2. Importar en `src/pages/index.astro`
-3. Usar el mismo estilo de variables CSS
-
-### Agregar nueva página
-1. Crear `src/pages/nueva-pagina.astro`
-2. Usar `MainLayout` como base
-3. Astro lo convertirá automáticamente en ruta
-
-### Agregar fuentes personalizadas
-1. Importar de Google Fonts en `MainLayout.astro`
-2. Usar en variables CSS `--font-display` o `--font-body`
-
-## 📊 SEO Optimizado
-
-- ✅ Meta descriptions
-- ✅ Estructura semántica
-- ✅ URLs amigables
-- ✅ Imágenes optimizadas
-- ✅ Alt text en imágenes
-
-## 🤝 Soporte
-
-Para dudas sobre Astro:
-- Documentación: https://docs.astro.build
-- Comunidad: https://astro.build/chat
-
-## 📄 Licencia
-
-Este template es libre para uso personal y comercial. Para fines educativos.
-
----
-
-**Versión**: 1.0  
-**Creado**: Julio 2026  
-**Última actualización**: Julio 2026
+- [Astro](https://astro.build) v5
+- [Tailwind CSS](https://tailwindcss.com) v3
+- Google Fonts (Bebas Neue + Montserrat)
+- SVGO (optimización SVG)

@@ -123,7 +123,7 @@ const items: MenuItem[] = [
       "Baos de short rib al miso con encurtido de jengibre",
       "Sushi Burrito Tulum-Tokyo completo",
       "Waffle-Chicken Tres Quesos",
-      "Poste shooter de maracuyá y cava con espuma de fruta de la pasión",
+      "Postre shooter de maracuyá y cava con espuma de fruta de la pasión",
       "2 Cócteles de autor o 2 cervezas artesanales"
     ],
     destacado: false
@@ -236,7 +236,7 @@ const items: MenuItem[] = [
 
 <section id="carta" class="menu-section">
   <div class="container">
-    {/* Header */}
+    <!-- Header -->
     <div class="section-header">
       <p class="section-badge">DESCUBRE</p>
       <h2>NUESTRA CARTA</h2>
@@ -245,27 +245,27 @@ const items: MenuItem[] = [
       </p>
     </div>
 
-    {/* Filtro Isótopo */}
+    <!-- Filtro Isótopo -->
     <div class="filter-tabs" id="filterTabs">
       {categorias.map((cat) => (
         <button
           class="filter-btn"
           data-filter={cat.id}
-          aria-pressed={cat.id === "todo" ? "true" : "false"}
+          aria-pressed={cat.id === categorias[0].id ? "true" : "false"}
         >
           {cat.label}
         </button>
       ))}
     </div>
 
-    {/* Grid de platos */}
+    <!-- Grid de platos -->
     <div class="menu-grid" id="menuGrid">
       {items.map((item) => (
         <article
           class={`menu-card ${item.tipo === "degustacion" ? "menu-card--degustacion" : ""} ${item.tipo === "grupo" ? "menu-card--grupo" : ""} ${item.tipo === "takeaway" ? "menu-card--takeaway" : ""}`}
           data-categoria={item.categoria}
         >
-          {/* Imagen */}
+          <!-- Imagen -->
           <div class="menu-card-image">
             <img
               src={item.imagen}
@@ -277,12 +277,12 @@ const items: MenuItem[] = [
             )}
           </div>
 
-          {/* Contenido */}
+          <!-- Contenido -->
           <div class="menu-card-body">
             <h3 class="menu-card-title">{item.nombre}</h3>
             <p class="menu-card-desc">{item.descripcion}</p>
 
-            {/* Items incluidos (Degustación / Grupos) */}
+            <!-- Items incluidos (Degustación / Grupos) -->
             {item.incluye && item.incluye.length > 0 && (
               <ul class="menu-card-incluye">
                 {item.incluye.map((linea) => (
@@ -291,7 +291,7 @@ const items: MenuItem[] = [
               </ul>
             )}
 
-            {/* Precio y CTA */}
+            <!-- Precio y CTA -->
             <div class="menu-card-footer">
               {item.precio && (
                 <span class="menu-card-price">{item.precio}</span>
@@ -662,7 +662,5 @@ const items: MenuItem[] = [
       });
     });
 
-    // Mostrar todos por defecto
-    tabs.forEach(t => t.setAttribute('aria-pressed', 'false'));
   });
 </script>

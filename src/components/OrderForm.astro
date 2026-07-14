@@ -841,12 +841,7 @@
         senaEl.textContent = '—';
         return;
       }
-      let total;
-      if (menu === "Chef's Cyber Lab" || menu === 'Umami Experience') {
-        total = DEG_PRECIOS[menu] * 2;
-      } else {
-        total = DEG_PRECIOS[menu] * pers;
-      }
+      const total = DEG_PRECIOS[menu] * pers;
       const sena = total * 0.2;
       totalEl.textContent = total.toFixed(2) + ' €';
       senaEl.textContent = sena.toFixed(2) + ' €';

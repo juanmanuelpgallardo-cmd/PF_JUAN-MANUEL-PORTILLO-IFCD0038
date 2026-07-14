@@ -22,7 +22,7 @@ const products = [
 ];
 ---
 
-<section id="merchandising" class="menu-section">
+<section id="merch" class="menu-section">
   <div class="container">
     <div class="section-header">
       <p class="section-badge">COLECCIÓN VERANO 2026</p>
@@ -221,11 +221,8 @@ const products = [
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const tabs = document.querySelectorAll<HTMLElement>('#merchFilterTabs .filter-btn');
-    const items = document.querySelectorAll<HTMLElement>('#merchGrid .menu-card');
-
-    // const tabs = document.querySelectorAll('#merchFilterTabs .filter-btn');
-    // const items = document.querySelectorAll('#merchGrid .menu-card');
+    const tabs = document.querySelectorAll('#merchFilterTabs .filter-btn');
+    const items = document.querySelectorAll('#merchGrid .menu-card');
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {

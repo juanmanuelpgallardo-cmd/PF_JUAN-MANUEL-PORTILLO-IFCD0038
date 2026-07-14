@@ -1,37 +1,43 @@
-# Guía de Estilos y Convenciones - PPF Gastronomía
+# Guía de Estilos y Convenciones - The Walkers
 
 ## 🎨 Sistema de Diseño
 
 ### Paleta de Colores
 
 **Colores Primarios:**
-- Primary: `#2563eb` (Azul elegante)
-- Primary Dark: `#1e40af` (Azul oscuro para hover)
-- Secondary: `#f97316` (Naranja energético)
-- Accent: `#06b6d4` (Cian moderno)
+- Walker Dark / Negro Carbón: `#121212` (Fondo principal)
+- Walker Card / Gris Asfalto: `#1E1E1E` (Superficies)
+- Walker Orange / Naranja Fuego: `#FF4A1C` (Acento principal, CTAs)
+- Walker Cyan / Azul Eléctrico: `#00E5FF` (Acento secundario, detalles)
 
 **Colores Neutrales:**
-- Dark: `#1f2937` (Texto principal)
-- Gray Light: `#f3f4f6` (Fondos claros)
-- White: `#ffffff` (Blanco puro)
+- Blanco Puro: `#FFFFFF`
+- Gris Ceniza: `#E0E0E0`
+- Dark: `#0D0D11` (Hover de fondo)
+
+**Alias CSS (en global.css):**
+```
+--color-primary → #121212
+--color-surface → #1E1E1E
+--color-accent → #FF4A1C
+--color-neon-cyan → #00E5FF
+```
 
 ### Tipografía
 
-**Familia tipográfica:**
-- Display: `Inter` (headings y textos destacados)
-- Body: `Inter` (párrafos y texto común)
+**Familias tipográficas:**
+- Display/Titulares: `Bebas Neue` (headings, uppercase)
+- Body/Cuerpo: `Montserrat` (párrafos, navegación)
 
 **Escala tipográfica:**
 ```
-h1: 3rem   (48px)
-h2: 2rem   (32px)
-h3: 1.5rem (24px)
-h4: 1.25rem (20px)
-p:  1rem   (16px)
+h1: 5rem   (80px) - Hero title
+h2: 2.8rem (45px) - Section titles
+h3: 1.3rem (21px) - Card titles
+p:  0.9rem (14px) - Body text
 ```
 
 ### Espaciado
-
 ```
 --spacing-xs:  0.5rem  (8px)
 --spacing-sm:  1rem    (16px)
@@ -42,24 +48,14 @@ p:  1rem   (16px)
 ```
 
 ### Bordes y Radios
-
 ```
---radius-sm:  0.375rem (6px)    - Botones pequeños
---radius-md:  0.5rem   (8px)    - Cards y inputs
---radius-lg:  0.75rem  (12px)   - Elementos grandes
---radius-xl:  1rem     (16px)   - Hero images
-```
-
-### Sombras
-
-```
---shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05)
---shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1)
---shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1)
+--radius-sm:  0.375rem
+--radius-md:  0.5rem
+--radius-lg:  0.75rem
+--radius-xl:  1rem
 ```
 
 ### Transiciones
-
 ```
 --transition-fast:   150ms ease-in-out
 --transition-normal: 300ms ease-in-out
@@ -78,236 +74,107 @@ p:  1rem   (16px)
 ---
 
 <template>
-  <!-- HTML -->
+  <!-- HTML (comentarios HTML, NO {/* JSX */}) -->
 </template>
 
 <style>
-  /* CSS scoped */
+  /* CSS scoped con variables CSS */
 </style>
 ```
 
+**Importante:** Usar siempre comentarios HTML `<!-- -->` en las plantillas. NO usar `{/* JSX */}`.
+
 **Nombrado de componentes:**
-- PascalCase: `Header.astro`, `HeroSection.astro`
-- Descriptivos: `ServiceCard.astro`, no `Card.astro`
+- PascalCase: `Header.astro`, `Hero.astro`, `OrderForm.astro`
+- Descriptivos: `FloatingCTA.astro`, `Merchandising.astro`
 
 ### CSS
-
-**Convenciones:**
 - Usar variables CSS para colores y espaciado
-- Evitar píxeles, usar `rem` basado en 16px base
-- Mobile-first approach
-- Usar clases con BEM cuando sea necesario
-
-**Ejemplo:**
-```css
-.card {
-  background-color: var(--color-white);
-  padding: var(--spacing-lg);
-  border-radius: var(--radius-lg);
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
-}
-
-@media (max-width: 768px) {
-  .card {
-    padding: var(--spacing-md);
-  }
-}
-```
+- Evitar píxeles, usar `rem`
+- Mobile-first approach con breakpoints en 768px y 480px
+- Clases con naming semántico (`.pilar-card`, `.menu-card`, `.review-card`)
 
 ## 🎯 Principios de Diseño
 
-### 1. Minimalismo Intencional
-- Cada elemento tiene propósito
-- Espacios vacíos son parte del diseño
-- No saturar con decoraciones
-
-### 2. Jerarquía Visual Clara
+### Jerarquía Visual
 ```
-Hero (impacto visual)
+Hero (impacto visual fullscreen con video)
   ↓
-Servicios (lo que ofrecemos)
+Esencia (4 pilares de la marca)
   ↓
-Testimonios (validación social)
+Carta/Menú (filtro dinámico, grid de platos)
+  ↓
+Merchandising (tienda de productos)
+  ↓
+Reviews (testimonios con validación social)
+  ↓
+OrderForm (pedidos, reservas, degustación)
   ↓
 Footer (información práctica)
 ```
 
-### 3. Consistencia
-- Mismo espaciado entre secciones
-- Misma tipografía en roles similares
-- Paleta de colores coherente
-
-### 4. Accesibilidad
-- Contraste suficiente (WCAG AA)
-- Textos alternativos en imágenes
-- Navegación con teclado
-- Respetar `prefers-reduced-motion`
-
-### 5. Performance
-- Imágenes optimizadas
-- Lazy loading
-- CSS minificado
-- Evitar JavaScript innecesario
-
-## 🖼️ Imágenes
-
-### Formatos recomendados
-- **JPG**: Fotografías (menú, platos)
-- **PNG**: Logos, iconos
-- **WebP**: Mejor compresión
-
-### Optimización
-- Máximo ancho: 1200px
-- Comprimir antes de subir
-- Usar srcset para responsive
-
-### Placeholders temporales
-```html
-<img 
-  src="https://images.unsplash.com/photo-{ID}?w=600&h=400&fit=crop"
-  alt="Descripción clara"
-  loading="lazy"
-/>
-```
+### Estética Cyber-Street Food
+- Fondo oscuro (#121212) con acentos neón (#FF4A1C, #00E5FF)
+- Efectos de glow en hover (box-shadow con colores de acento)
+- Tipografía bold en headlines (Bebas Neue, uppercase)
+- Tarjetas con bordes sutiles y elevación en hover
 
 ## 🔧 Componentes
 
-### Card Component
+### Card
 ```astro
-<Card 
-  title="Título"
-  description="Descripción"
-  image="/images/card.jpg"
-  icon="🍽️"
+<Card
+  title="ROLLS FUSIÓN"
+  description="Sushi reimaginado con ingredientes de autor"
+  image="https://..."
+  icon="🥟"
 />
 ```
 
-**Props:**
-- `title`: string (requerido)
-- `description`: string (requerido)
-- `image`: string (opcional)
-- `icon`: string (opcional - emoji o SVG)
-
-### Button Variants
+### Botones
 ```html
-<!-- Primary -->
-<button class="btn btn-primary">Acción principal</button>
-
-<!-- Secondary -->
+<button class="btn btn-primary">¡PIDE YA!</button>
 <button class="btn btn-secondary">Acción secundaria</button>
-
-<!-- Outline -->
-<button class="btn btn-outline">Acción simple</button>
+<button class="btn btn-outline">VER CARTA</button>
 ```
 
 ## 📱 Responsive Design
 
 ### Breakpoints
 ```css
-/* Mobile First */
-@media (max-width: 768px) {
-  /* Tablets y arriba */
-}
-
-@media (max-width: 480px) {
-  /* Móviles pequeños */
-}
+@media (max-width: 1024px) { /* Tablets landscape */ }
+@media (max-width: 768px) {  /* Tablets portrait */ }
+@media (max-width: 480px) {  /* Móviles */ }
 ```
 
 ### Reglas de Adaptación
-1. Tipografía: Reduce proporcionalmente
-2. Espaciado: Usa `spacing-md` en móvil
-3. Grid: 1 columna en móvil
-4. Imágenes: 100% ancho máximo
-5. Botones: Full width en móvil
+1. Tipografía: reducir tamaño progresivamente
+2. Grids: 4→2→1 columnas según viewport
+3. Botones: full-width en móvil
+4. Navegación: wrap en móvil
 
-## 🚀 Optimizaciones de Performance
+## 🖼️ Imágenes
+- **Lazy loading** en todas las imágenes (`loading="lazy"`)
+- Alt text descriptivo para accesibilidad
+- Optimizar PNGs antes de subir (peso ideal < 500KB)
 
-### Imágenes
-```astro
-<!-- ✅ Correcto -->
-<img 
-  src="image.jpg"
-  alt="descripción"
-  loading="lazy"
-  width="600"
-  height="400"
-/>
+## Componentes del Proyecto
 
-<!-- ❌ Evitar -->
-<img src="image.jpg" />
-```
+| Componente | Archivo | Descripción |
+|---|---|---|
+| Header | `src/components/Header.astro` | Navegación sticky con blur |
+| Hero | `src/components/Hero.astro` | Fullscreen con video, overlay y CTA |
+| Esencia | `src/components/Esencia.astro` | 4 pilares con iconos SVG |
+| Card | `src/components/Card.astro` | Card reutilizable con imagen, icono, texto |
+| Menu | `src/components/Menu.astro` | Carta con filtro dinámico JS |
+| Merchandising | `src/components/Merchandising.astro` | Tienda con filtro por categorías |
+| Reviews | `src/components/Reviews.astro` | Testimonios con estrellas |
+| OrderForm | `src/components/OrderForm.astro` | 3 formularios: pedido, grupo, degustación |
+| Footer | `src/components/Footer.astro` | 4 columnas con info, enlaces, horarios |
+| FloatingCTA | `src/components/FloatingCTA.astro` | Botón fijo flotante con pulse |
+| MainLayout | `src/layouts/MainLayout.astro` | Layout base HTML |
 
-### CSS
-- Scope CSS en componentes
-- Evitar !important
-- Usar CSS variables
-- Minimizar especificidad
-
-### HTML
-- Estructura semántica
-- Meta tags relevantes
-- Alt text descriptivos
-- Heading hierarchy correcto
-
-## 📊 Accesibilidad (A11y)
-
-### Colores
-- Contraste mínimo AA: 4.5:1 para texto
-- Contraste AAA: 7:1 (preferible)
-- No depender solo de color
-
-### Textos
-- Textos claros y concisos
-- Párrafos cortos
-- Listas cuando sea posible
-
-### Navegación
-- Links descriptivos
-- Orden lógico de tabs
-- Focus visible
-
-## 🔒 SEO Best Practices
-
-### Meta Tags
-```astro
-<title>PPF Gastronomía | Servicios</title>
-<meta name="description" content="..." />
-<meta name="keywords" content="..." />
-```
-
-### Estructura
-- H1 por página (solo uno)
-- Headings en orden (H1 → H2 → H3)
-- Imágenes con alt text
-- URLs descriptivas
-
-### Performance
-- Tiempo de carga < 3 segundos
-- Móvil-first indexing
-- Core Web Vitals optimizadas
-
-## 🤝 Contribuciones
-
-Al agregar nuevos componentes:
-1. ✅ Seguir esta guía de estilos
-2. ✅ Usar variables CSS
-3. ✅ Responsive design
-4. ✅ Documentación en componente
-5. ✅ Accesibilidad checklist
-
-## 📖 Referencias
-
+## Referencias
 - [Astro Docs](https://docs.astro.build)
-- [MDN Web Docs](https://developer.mozilla.org)
+- [Tailwind CSS](https://tailwindcss.com)
 - [WCAG 2.1](https://www.w3.org/WAI/WCAG21/quickref/)
-- [Web.dev](https://web.dev)
-
----
-
-**Versión**: 1.0  
-**Última actualización**: Diciembre 2024
