@@ -22,6 +22,13 @@ interface MenuItem {
   destacado?: boolean;
 }
 
+const categoryInfo: Record<string, { title: string; desc: string }> = {
+  estrella: { title: 'PLATOS ESTRELLA', desc: 'Nuestros platos más icónicos, los favoritos de la casa' },
+  degustacion: { title: 'DEGUSTACIÓN', desc: 'Experiencias diseñadas para disfrutar al máximo' },
+  grupos: { title: 'GRUPOS', desc: 'Planes especiales para compartir con los tuyos' },
+  llevar: { title: 'PARA LLEVAR', desc: 'Ofertas pensadas para tu día a día' }
+};
+
 const items: MenuItem[] = [
   // ===== PLATOS ESTRELLA =====
   {
@@ -128,6 +135,54 @@ const items: MenuItem[] = [
     ],
     destacado: false
   },
+  {
+    categoria: "degustacion",
+    nombre: 'Menú "Asian Tapas Walk"',
+    descripcion: "Para 1 persona. Un paseo por las tapas fusión asiáticas más vibrantes. Perfecto para quienes quieren probar un poco de todo.",
+    precio: "24,90 €/pers.",
+    badge: "NUEVO",
+    imagen: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=350&fit=crop",
+    tipo: "degustacion",
+    incluye: [
+      "Gyozas de wagyu con salsa de soja y sésamo",
+      "Bao de pollo teriyaki con pepino encurtido",
+      "Brocheta yakitori de ternera con glaze teriyaki",
+      "Postre: Mochi de matcha con helado de té verde"
+    ],
+    destacado: false
+  },
+  {
+    categoria: "degustacion",
+    nombre: 'Menú "Smash Experience"',
+    descripcion: "Para 2 personas. La experiencia burger lover definitiva con nuestras mejores smash burgers y acompañamientos.",
+    precio: "48,00 € (2 pers.)",
+    imagen: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=500&h=350&fit=crop",
+    tipo: "degustacion",
+    incluye: [
+      "2 K-Pop Smash burgers con cheddar fundido",
+      "Patatas trufadas XL con parmesano",
+      "Aros de cebolla tempura con salsa wasabi-miel",
+      "2 Cervezas artesanales o refrescos",
+      "Milkshake de oreo para compartir"
+    ],
+    destacado: true
+  },
+  {
+    categoria: "degustacion",
+    nombre: 'Menú "Vegan Cyber Fusion"',
+    descripcion: "Para 1 persona. Fusión vegana con técnica de autor. Demostramos que la cocina vegetal puede ser salvajemente sabrosa.",
+    precio: "26,90 €/pers.",
+    badge: "VEGAN",
+    imagen: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&h=350&fit=crop",
+    tipo: "degustacion",
+    incluye: [
+      "Bao de boniato glaseado y ombligo de plátano",
+      "Tacos de jackfruit al pastor con salsa de aguacate",
+      "Sushi burrito vegano con quinoa y verduras en tempura",
+      "Postre: Brownie de chocolate sostenible con helado de coco"
+    ],
+    destacado: false
+  },
 
   // ===== MENÚS PARA GRUPOS =====
   {
@@ -173,6 +228,57 @@ const items: MenuItem[] = [
       "Ración de patatas trufadas con parmesano",
       "Barra libre de refrescos 60 min",
       "1 Cóctel de autor por persona"
+    ],
+    destacado: false
+  },
+  {
+    categoria: "grupos",
+    nombre: 'Menú "Walkers Experience"',
+    descripcion: "De 2 a 4 personas. Experiencia premium para grupos pequeños que quieren disfrutar de lo mejor de la casa.",
+    precio: "38,00 €/pers.",
+    imagen: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=500&h=350&fit=crop",
+    tipo: "grupo",
+    incluye: [
+      "Tabla de baos variados (4 uds.) para compartir",
+      "2 Sushi Burritos a elegir",
+      "2 Burgers Fusión a elección del grupo",
+      "Ración de patatas trufadas con parmesano",
+      "2 Cócteles de autor o 4 cervezas artesanales"
+    ],
+    destacado: true
+  },
+  {
+    categoria: "grupos",
+    nombre: 'Menú "Fusion Fest"',
+    descripcion: "De 10 a 15 personas. El formato celebración definitivo con bandejeo continuo y estaciones en vivo.",
+    precio: "35,00 €/pers.",
+    badge: "EVENTOS",
+    imagen: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=500&h=350&fit=crop",
+    tipo: "grupo",
+    incluye: [
+      "Estación de tacos asiáticos en vivo",
+      "Mini burgers variadas (3 tipos)",
+      "Bowls de poke personalizados",
+      "Barra de baos con 3 rellenos distintos",
+      "Barra libre de refrescos 90 min",
+      "Cóctel de bienvenida por persona"
+    ],
+    destacado: false
+  },
+  {
+    categoria: "grupos",
+    nombre: 'Menú "Afterwork Cyber"',
+    descripcion: "De 4 a 8 personas. El plan afterwork perfecto con picoteo fusión y cerveza artesanal.",
+    precio: "28,00 €/pers.",
+    badge: "AFTERWORK",
+    imagen: "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=500&h=350&fit=crop",
+    tipo: "grupo",
+    incluye: [
+      "Edamame trufado y patatas gajo con salsa brava fusión",
+      "Alitas glaseadas en barbacoa de maracuyá",
+      "8 Mini baos variados para compartir",
+      "2 Rondas de cerveza artesanal por persona",
+      "Ración de cronuts de postre"
     ],
     destacado: false
   },
@@ -256,6 +362,12 @@ const items: MenuItem[] = [
           {cat.label}
         </button>
       ))}
+    </div>
+
+    <!-- Categoría activa -->
+    <div class="active-category" id="activeCategory">
+      <h3 class="active-category-title" id="activeCategoryTitle">PLATOS ESTRELLA</h3>
+      <p class="active-category-desc" id="activeCategoryDesc">Nuestros platos más icónicos, los favoritos de la casa</p>
     </div>
 
     <!-- Grid de platos -->
@@ -607,6 +719,28 @@ const items: MenuItem[] = [
     margin: 0;
   }
 
+  /* ACTIVE CATEGORY HEADER */
+  .active-category {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md) 0;
+  }
+
+  .active-category-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--color-accent);
+    letter-spacing: 0.08em;
+    margin-bottom: var(--spacing-xs);
+    text-shadow: 0 0 20px rgba(255, 94, 54, 0.3);
+  }
+
+  .active-category-desc {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    letter-spacing: 0.04em;
+  }
+
   @media (max-width: 768px) {
     .section-header h2 {
       font-size: 2rem;
@@ -642,11 +776,36 @@ const items: MenuItem[] = [
   }
 </style>
 
-  <script>
-  // Filtro dinámico
+<script>
+  const CATEGORY_INFO = {
+    estrella: { title: 'PLATOS ESTRELLA', desc: 'Nuestros platos más icónicos, los favoritos de la casa' },
+    degustacion: { title: 'DEGUSTACIÓN', desc: 'Experiencias diseñadas para disfrutar al máximo' },
+    grupos: { title: 'GRUPOS', desc: 'Planes especiales para compartir con los tuyos' },
+    llevar: { title: 'PARA LLEVAR', desc: 'Ofertas pensadas para tu día a día' }
+  };
+
   document.addEventListener('DOMContentLoaded', () => {
-    const tabs = document.querySelectorAll('.filter-btn');
+    const tabs = document.querySelectorAll('#filterTabs .filter-btn');
     const items = document.querySelectorAll('#menuGrid .menu-card');
+    const activeTitle = document.getElementById('activeCategoryTitle');
+    const activeDesc = document.getElementById('activeCategoryDesc');
+
+    function filterTo(categoryId) {
+      items.forEach(item => {
+        const cat = item.dataset.categoria;
+        item.classList.toggle('filter-hidden', cat !== categoryId);
+      });
+
+      const info = CATEGORY_INFO[categoryId];
+      if (info) {
+        activeTitle.textContent = info.title;
+        activeDesc.textContent = info.desc;
+      }
+    }
+
+    // Show first category on load
+    const firstId = tabs[0]?.dataset.filter;
+    if (firstId) filterTo(firstId);
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
@@ -655,12 +814,8 @@ const items: MenuItem[] = [
         tabs.forEach(t => t.setAttribute('aria-pressed', 'false'));
         tab.setAttribute('aria-pressed', 'true');
 
-        items.forEach(item => {
-          const categoria = item.dataset.categoria;
-          item.classList.toggle('filter-hidden', categoria !== filter);
-        });
+        filterTo(filter);
       });
     });
-
   });
 </script>

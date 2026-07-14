@@ -143,7 +143,7 @@
           </div>
           <div class="form-group">
             <label for="grupo-personas">Número de personas *</label>
-            <input type="number" id="grupo-personas" name="personas" min="6" max="20" value="6" required />
+            <input type="number" id="grupo-personas" name="personas" min="2" max="20" value="6" required />
           </div>
         </div>
         <div class="form-row">
@@ -165,6 +165,9 @@
             <option value="The Crew">Menú "The Crew" (4-6 pers.) — 24,90 €/pers.</option>
             <option value="Street Party">Menú "Street Party" (6-8 pers.) — 32,00 €/pers.</option>
             <option value="The Syndicate">Menú "The Syndicate" (8+ pers.) — 42,00 €/pers.</option>
+            <option value="Walkers Experience">Menú "Walkers Experience" (2-4 pers.) — 38,00 €/pers.</option>
+            <option value="Fusion Fest">Menú "Fusion Fest" (10-15 pers.) — 35,00 €/pers.</option>
+            <option value="Afterwork Cyber">Menú "Afterwork Cyber" (4-8 pers.) — 28,00 €/pers.</option>
           </select>
         </div>
         <div class="form-group">
@@ -248,6 +251,9 @@
               <option value="Street Fusion Tour">Menú "Street Fusion Tour" — 29,90 €/pers.</option>
               <option value="Chef's Cyber Lab">Menú "Chef's Cyber Lab" — 54,00 € (2 pers.)</option>
               <option value="Umami Experience">Menú "Umami Experience" — 68,00 € (2 pers.)</option>
+              <option value="Asian Tapas Walk">Menú "Asian Tapas Walk" — 24,90 €/pers.</option>
+              <option value="Smash Experience">Menú "Smash Experience" — 48,00 € (2 pers.)</option>
+              <option value="Vegan Cyber Fusion">Menú "Vegan Cyber Fusion" — 26,90 €/pers.</option>
             </select>
           </div>
           <div class="form-group">
@@ -803,7 +809,10 @@
     const GRUPO_PRECIOS = {
       'The Crew': 24.90,
       'Street Party': 32.00,
-      'The Syndicate': 42.00
+      'The Syndicate': 42.00,
+      'Walkers Experience': 38.00,
+      'Fusion Fest': 35.00,
+      'Afterwork Cyber': 28.00
     };
 
     function calcGrupoSena() {
@@ -811,7 +820,7 @@
       const pers = parseInt(document.getElementById('grupo-personas').value) || 0;
       const totalEl = document.getElementById('grupo-total');
       const senaEl = document.getElementById('grupo-sena');
-      if (!menu || pers < 6) {
+      if (!menu || pers < 2) {
         totalEl.textContent = '—';
         senaEl.textContent = '—';
         return;
@@ -828,7 +837,10 @@
     const DEG_PRECIOS = {
       'Street Fusion Tour': 29.90,
       "Chef's Cyber Lab": 27.00,
-      'Umami Experience': 34.00
+      'Umami Experience': 34.00,
+      'Asian Tapas Walk': 24.90,
+      'Smash Experience': 24.00,
+      'Vegan Cyber Fusion': 26.90
     };
 
     function calcDegSena() {
