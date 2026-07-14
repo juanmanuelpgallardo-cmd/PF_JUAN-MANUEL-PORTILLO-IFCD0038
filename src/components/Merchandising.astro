@@ -1,13 +1,4 @@
 ---
-const categories = [
-  { id: "todo", label: "TODO" },
-  { id: "textil", label: "TEXTIL" },
-  { id: "accesorios", label: "ACCESORIOS" },
-  { id: "playa", label: "PLAYA" },
-  { id: "hidratacion", label: "HIDRATACIÓN" },
-  { id: "hosteleria", label: "HOSTELERÍA" }
-];
-
 const products = [
   { id: 1, name: 'Camiseta de Hombre', category: 'textil', price: '24.99 €', desc: 'Negra con logo centrado en naranja y cian', image: '/img/CAMISETA%20CHICO.png' },
   { id: 2, name: 'Camiseta de Mujer (Holgada)', category: 'textil', price: '24.99 €', desc: 'Blanca con logo sutil en el pecho', image: '/img/CAMISETA%20CHICA.png' },
@@ -30,18 +21,6 @@ const products = [
       <p class="section-subtitle">
         Sabor callejero, técnica de autor llevada a tu estilo.
       </p>
-    </div>
-
-    <div class="filter-tabs" id="merchFilterTabs">
-      {categories.map(cat => (
-        <button
-          class="filter-btn"
-          data-filter={cat.id}
-          aria-pressed={cat.id === "todo" ? "true" : "false"}
-        >
-          {cat.label}
-        </button>
-      ))}
     </div>
 
     <div class="menu-grid merch-grid" id="merchGrid">
@@ -67,7 +46,15 @@ const products = [
 
 <style>
   .merch-grid {
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .merch-grid .menu-card {
+    width: calc(25% - 1.125rem);
+    min-width: 250px;
   }
 
   .merch-grid .menu-card-image {
@@ -182,30 +169,9 @@ const products = [
     box-shadow: 0 0 25px rgba(255, 94, 54, 0.1);
   }
 
-  .merch-grid .menu-card.filter-hidden {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    border: none;
-    pointer-events: none;
-    transform: scale(0.9);
-  }
-
-  .merch-grid .menu-card.filter-hidden .menu-card-image {
-    height: 0;
-    margin: 0;
-  }
-
-  .merch-grid .menu-card.filter-hidden .menu-card-body {
-    padding: 0;
-    margin: 0;
-  }
-
   @media (max-width: 768px) {
-    .merch-grid {
-      grid-template-columns: 1fr;
+    .merch-grid .menu-card {
+      width: 100%;
     }
     .merch-grid .menu-card-image {
       height: 200px;
@@ -213,30 +179,8 @@ const products = [
   }
 
   @media (min-width: 769px) and (max-width: 1024px) {
-    .merch-grid {
-      grid-template-columns: repeat(2, 1fr);
+    .merch-grid .menu-card {
+      width: calc(50% - 0.75rem);
     }
   }
 </style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const tabs = document.querySelectorAll('#merchFilterTabs .filter-btn');
-    const items = document.querySelectorAll('#merchGrid .menu-card');
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const filter = tab.dataset.filter;
-
-        tabs.forEach(t => t.setAttribute('aria-pressed', 'false'));
-        tab.setAttribute('aria-pressed', 'true');
-
-        items.forEach(item => {
-          const categoria = item.dataset.categoria;
-          const shouldHide = filter !== 'todo' && categoria !== filter;
-          item.classList.toggle('filter-hidden', shouldHide);
-        });
-      });
-    });
-  });
-</script>

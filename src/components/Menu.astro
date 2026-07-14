@@ -338,11 +338,16 @@ const items: MenuItem[] = [
     badge: "LATE NIGHT"
   }
 ];
+
+const itemsByCategory = categorias.map(cat => ({
+  id: cat.id,
+  ...categoryInfo[cat.id],
+  items: items.filter(item => item.categoria === cat.id)
+}));
 ---
 
 <section id="carta" class="menu-section">
   <div class="container">
-    <!-- Header -->
     <div class="section-header">
       <p class="section-badge">DESCUBRE</p>
       <h2>NUESTRA CARTA</h2>
@@ -351,85 +356,70 @@ const items: MenuItem[] = [
       </p>
     </div>
 
-    <!-- Filtro Isótopo -->
-    <div class="filter-tabs" id="filterTabs">
-      {categorias.map((cat) => (
-        <button
-          class="filter-btn"
-          data-filter={cat.id}
-          aria-pressed={cat.id === categorias[0].id ? "true" : "false"}
-        >
-          {cat.label}
-        </button>
-      ))}
-    </div>
+    {itemsByCategory.map(group => (
+      <div class="category-group">
+        <div class="category-header">
+          <h3 class="category-header-title">{group.title}</h3>
+          <p class="category-header-desc">{group.desc}</p>
+        </div>
 
-    <!-- Categoría activa -->
-    <div class="active-category" id="activeCategory">
-      <h3 class="active-category-title" id="activeCategoryTitle">PLATOS ESTRELLA</h3>
-      <p class="active-category-desc" id="activeCategoryDesc">Nuestros platos más icónicos, los favoritos de la casa</p>
-    </div>
+        <div class="menu-grid">
+          {group.items.map((item) => (
+            <article
+              class={`menu-card ${item.tipo === "degustacion" ? "menu-card--degustacion" : ""} ${item.tipo === "grupo" ? "menu-card--grupo" : ""} ${item.tipo === "takeaway" ? "menu-card--takeaway" : ""}`}
+              data-categoria={item.categoria}
+            >
+              <div class="menu-card-image">
+                <img
+                  src={item.imagen}
+                  alt={item.nombre}
+                  loading="lazy"
+                />
+                {item.badge && (
+                  <span class="menu-badge">{item.badge}</span>
+                )}
+              </div>
 
-    <!-- Grid de platos -->
-    <div class="menu-grid" id="menuGrid">
-      {items.map((item) => (
-        <article
-          class={`menu-card ${item.tipo === "degustacion" ? "menu-card--degustacion" : ""} ${item.tipo === "grupo" ? "menu-card--grupo" : ""} ${item.tipo === "takeaway" ? "menu-card--takeaway" : ""}`}
-          data-categoria={item.categoria}
-        >
-          <!-- Imagen -->
-          <div class="menu-card-image">
-            <img
-              src={item.imagen}
-              alt={item.nombre}
-              loading="lazy"
-            />
-            {item.badge && (
-              <span class="menu-badge">{item.badge}</span>
-            )}
-          </div>
+              <div class="menu-card-body">
+                <h3 class="menu-card-title">{item.nombre}</h3>
+                <p class="menu-card-desc">{item.descripcion}</p>
 
-          <!-- Contenido -->
-          <div class="menu-card-body">
-            <h3 class="menu-card-title">{item.nombre}</h3>
-            <p class="menu-card-desc">{item.descripcion}</p>
+                {item.incluye && item.incluye.length > 0 && (
+                  <ul class="menu-card-incluye">
+                    {item.incluye.map((linea) => (
+                      <li>{linea}</li>
+                    ))}
+                  </ul>
+                )}
 
-            <!-- Items incluidos (Degustación / Grupos) -->
-            {item.incluye && item.incluye.length > 0 && (
-              <ul class="menu-card-incluye">
-                {item.incluye.map((linea) => (
-                  <li>{linea}</li>
-                ))}
-              </ul>
-            )}
+                <div class="menu-card-footer">
+                  {item.precio && (
+                    <span class="menu-card-price">{item.precio}</span>
+                  )}
 
-            <!-- Precio y CTA -->
-            <div class="menu-card-footer">
-              {item.precio && (
-                <span class="menu-card-price">{item.precio}</span>
-              )}
-
-              {item.categoria === "grupos" ? (
-                <a
-                  href="#pedir"
-                  class="btn btn-cta btn-whatsapp"
-                >
-                  RESERVAR PARA MI GRUPO
-                </a>
-              ) : item.categoria === "llevar" ? (
-                <button class="btn btn-cta btn-add-cart">
-                  AÑADIR AL CARRITO
-                </button>
-              ) : (
-                <a href="#pedir" class="btn btn-cta">
-                  PEDIR AHORA
-                </a>
-              )}
-            </div>
-          </div>
-        </article>
-      ))}
-    </div>
+                  {item.categoria === "grupos" ? (
+                    <a
+                      href="#pedir"
+                      class="btn btn-cta btn-whatsapp"
+                    >
+                      RESERVAR PARA MI GRUPO
+                    </a>
+                  ) : item.categoria === "llevar" ? (
+                    <button class="btn btn-cta btn-add-cart">
+                      AÑADIR AL CARRITO
+                    </button>
+                  ) : (
+                    <a href="#pedir" class="btn btn-cta">
+                      PEDIR AHORA
+                    </a>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    ))}
   </div>
 </section>
 
@@ -468,53 +458,36 @@ const items: MenuItem[] = [
     margin: 0 auto;
   }
 
-  /* FILTER TABS */
-  .filter-tabs {
-    display: flex;
-    gap: var(--spacing-sm);
-    justify-content: center;
-    flex-wrap: wrap;
+  /* CATEGORY GROUP */
+  .category-group {
     margin-bottom: var(--spacing-2xl);
-    padding: var(--spacing-md) 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  .filter-btn {
-    background: transparent;
-    border: none;
-    color: var(--color-muted);
+  .category-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .category-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-lg) 0;
+    border-top: 1px solid rgba(255, 94, 54, 0.15);
+    border-bottom: 1px solid rgba(255, 94, 54, 0.15);
+  }
+
+  .category-header-title {
     font-family: var(--font-display);
-    font-size: 0.95rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.5rem 1.2rem;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    position: relative;
-  }
-
-  .filter-btn::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 2px;
-    background-color: var(--color-accent);
-    transition: width var(--transition-fast);
-  }
-
-  .filter-btn:hover {
-    color: var(--color-white);
-  }
-
-  .filter-btn[aria-pressed="true"] {
+    font-size: 1.8rem;
     color: var(--color-accent);
+    letter-spacing: 0.08em;
+    margin-bottom: var(--spacing-xs);
+    text-shadow: 0 0 20px rgba(255, 94, 54, 0.3);
   }
 
-  .filter-btn[aria-pressed="true"]::after {
-    width: 60%;
+  .category-header-desc {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    letter-spacing: 0.04em;
   }
 
   /* MENU GRID */
@@ -697,63 +670,9 @@ const items: MenuItem[] = [
     color: var(--color-neon-cyan);
   }
 
-  /* ANIMACIÓN FILTER */
-  .menu-card.filter-hidden {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    border: none;
-    pointer-events: none;
-    transform: scale(0.9);
-  }
-
-  .menu-card.filter-hidden .menu-card-image {
-    height: 0;
-    margin: 0;
-  }
-
-  .menu-card.filter-hidden .menu-card-body {
-    padding: 0;
-    margin: 0;
-  }
-
-  /* ACTIVE CATEGORY HEADER */
-  .active-category {
-    text-align: center;
-    margin-bottom: var(--spacing-lg);
-    padding: var(--spacing-md) 0;
-  }
-
-  .active-category-title {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    color: var(--color-accent);
-    letter-spacing: 0.08em;
-    margin-bottom: var(--spacing-xs);
-    text-shadow: 0 0 20px rgba(255, 94, 54, 0.3);
-  }
-
-  .active-category-desc {
-    font-size: 0.9rem;
-    color: var(--color-muted);
-    letter-spacing: 0.04em;
-  }
-
   @media (max-width: 768px) {
     .section-header h2 {
       font-size: 2rem;
-    }
-
-    .filter-tabs {
-      gap: 0.3rem;
-      padding: var(--spacing-sm) 0;
-    }
-
-    .filter-btn {
-      font-size: 0.75rem;
-      padding: 0.4rem 0.8rem;
     }
 
     .menu-grid {
@@ -773,49 +692,9 @@ const items: MenuItem[] = [
     .btn-cta {
       text-align: center;
     }
+
+    .category-header-title {
+      font-size: 1.4rem;
+    }
   }
 </style>
-
-<script>
-  const CATEGORY_INFO = {
-    estrella: { title: 'PLATOS ESTRELLA', desc: 'Nuestros platos más icónicos, los favoritos de la casa' },
-    degustacion: { title: 'DEGUSTACIÓN', desc: 'Experiencias diseñadas para disfrutar al máximo' },
-    grupos: { title: 'GRUPOS', desc: 'Planes especiales para compartir con los tuyos' },
-    llevar: { title: 'PARA LLEVAR', desc: 'Ofertas pensadas para tu día a día' }
-  };
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const tabs = document.querySelectorAll('#filterTabs .filter-btn');
-    const items = document.querySelectorAll('#menuGrid .menu-card');
-    const activeTitle = document.getElementById('activeCategoryTitle');
-    const activeDesc = document.getElementById('activeCategoryDesc');
-
-    function filterTo(categoryId) {
-      items.forEach(item => {
-        const cat = item.dataset.categoria;
-        item.classList.toggle('filter-hidden', cat !== categoryId);
-      });
-
-      const info = CATEGORY_INFO[categoryId];
-      if (info) {
-        activeTitle.textContent = info.title;
-        activeDesc.textContent = info.desc;
-      }
-    }
-
-    // Show first category on load
-    const firstId = tabs[0]?.dataset.filter;
-    if (firstId) filterTo(firstId);
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const filter = tab.dataset.filter;
-
-        tabs.forEach(t => t.setAttribute('aria-pressed', 'false'));
-        tab.setAttribute('aria-pressed', 'true');
-
-        filterTo(filter);
-      });
-    });
-  });
-</script>
