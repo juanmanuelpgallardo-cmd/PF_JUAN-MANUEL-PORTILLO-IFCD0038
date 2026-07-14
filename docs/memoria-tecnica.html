@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Memoria Técnica - THE WALKERS</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            border-bottom: 2px solid #ff5722;
+            padding-bottom: 10px;
+            color: #111;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+        h3 {
+            color: #ff5722;
+            font-size: 16px;
+            margin-top: 25px;
+            margin-bottom: 8px;
+            border-left: 4px solid #00bcd4;
+            padding-left: 10px;
+        }
+        p, li {
+            font-size: 14px;
+            text-align: justify;
+        }
+        ul {
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        strong {
+            color: #000;
+        }
+        .footer {
+            margin-top: 50px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            font-size: 12px;
+            color: #777;
+            text-align: center;
+        }
+        @media print {
+            body { margin: 20px; }
+            h3 { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Memoria Técnica del Proyecto: THE WALKERS</h1>
+
+    <h3>1. ¿Qué negocio has creado?</h3>
+    <p>El negocio diseñado se llama <strong>"THE WALKERS"</strong>, un restaurante de comida urbana fusión (<strong>Street Food Fusión</strong>). La oferta gastronómica se compone de productos modernos y de tendencia como <em>Rolls Fusión, Tacos Asiáticos, Burgers Gourmet y Bowls</em>, bajo el concepto comercial de <em>"Sabor callejero, técnica de autor"</em>. El sitio web desarrollado funciona como landing page oficial y catálogo interactivo de la marca.</p>
+
+    <h3>2. ¿Qué recursos de la E1 has utilizado?</h3>
+    <p>De la primera entrega se han recuperado y mantenido los siguientes elementos clave:</p>
+    <ul>
+        <li><strong>Estructura de navegación:</strong> Se han respetado las secciones principales en el menú superior (Inicio, Esencia, Carta, Merch, Reseñas, Contacto).</li>
+        <li><strong>Textos de marca:</strong> El eslogan principal, el menú detallado de los platos y las llamadas a la acción directas ("¡Pide ya!").</li>
+        <li><strong>Identidad corporativa:</strong> El logotipo con el nombre del restaurante y la conceptualización del negocio.</li>
+    </ul>
+
+    <h3>3. ¿Qué colores y tipografías has elegido?</h3>
+    <ul>
+        <li><strong>Colores:</strong>
+            <ul>
+                <li><strong>Fondo / Base:</strong> Negro puro y tonos oscuros para aportar una estética nocturna, urbana y de estilo callejero.</li>
+                <li><strong>Acento principal:</strong> Naranja vibrante en los botones de conversión ("¡Pide ya!") para dirigir la atención del usuario.</li>
+                <li><strong>Acento secundario:</strong> Turquesa/Cian brillante en el botón "Ver Carta" y detalles decorativos, logrando un contraste tipo neón.</li>
+            </ul>
+        </li>
+        <li><strong>Tipografías:</strong>
+            <ul>
+                <li><strong>Titulares:</strong> Fuente de tipo Sans-Serif Condensada, de trazo grueso y en mayúsculas, que simula la cartelería urbana.</li>
+                <li><strong>Cuerpo de texto:</strong> Fuente Sans-Serif geométrica y delgada, optimizada para una lectura ágil de los platos y precios.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>4. ¿Si has usado CSS propio o Bootstrap?</h3>
+    <p>El proyecto se ha maquetado utilizando <strong>CSS propio (Vanilla CSS)</strong> integrado en los componentes de Astro, descartando el uso de frameworks externos como Bootstrap. Esto ha permitido codificar de forma limpia la cabecera fija, las transparencias sobre la imagen de fondo, las cuadrículas flexibles y los efectos interactivos de los botones, garantizando un rendimiento óptimo de carga.</p>
+
+    <h3>5. ¿Qué has hecho tú y qué venía dado en la plantilla?</h3>
+    <ul>
+        <li><strong>Venía dado en la plantilla:</strong> La estructura base de directorios del proyecto Astro (carpetas de origen, componentes y páginas) junto con los archivos de configuración inicial del entorno de desarrollo.</li>
+        <li><strong>Desarrollado por mí:</strong>
+            <ul>
+                <li><strong>Diseño de la interfaz (UI):</strong> Selección y edición del fondo gastronómico, maquetación y posicionamiento de los elementos de la sección principal.</li>
+                <li><strong>Componentes de navegación:</strong> Creación del Navbar superior adaptado con logotipo, enlaces de navegación y botón destacado.</li>
+                <li><strong>Lógica y funcionalidad (TypeScript):</strong> Programación del script de filtrado para las pestañas de la Carta y el catálogo mediante la lectura de atributos <code>dataset</code>.</li>
+                <li><strong>Corrección de tipado:</strong> Resolución de las advertencias de TypeScript aplicando el casting estricto <code>&lt;HTMLElement&gt;</code> en los selectores del DOM.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="footer">
+        Documento de Evaluación Académica - Proyecto Web Astro
+    </div>
+
+</body>
+</html>
