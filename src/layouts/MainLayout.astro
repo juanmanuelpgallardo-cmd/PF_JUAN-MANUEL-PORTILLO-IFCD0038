@@ -20,13 +20,7 @@ const { title = 'The Walkers | Street Food Fusión', description = 'Sabor callej
     <meta name="description" content={description} />
     <title>{title}</title>
     
-    {/* Google Fonts: Anton (títulos) + Plus Jakarta Sans (cuerpo) */}
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link 
-      href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" 
-      rel="stylesheet" 
-    />
+
   </head>
   <body>
     <Header />
@@ -45,6 +39,11 @@ const { title = 'The Walkers | Street Food Fusión', description = 'Sabor callej
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
   }
 
   ::selection {

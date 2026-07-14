@@ -1,0 +1,923 @@
+---
+// Componente de formulario de pedido, reserva y pago
+---
+
+<section id="pedir" class="order-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-badge">PIDE YA</p>
+      <h2>HAZ TU PEDIDO</h2>
+      <p>Elige cómo quieres disfrutar de The Walkers</p>
+    </div>
+
+    <div class="order-tabs" id="orderTabs">
+      <button class="order-tab active" data-tab="pedido" aria-pressed="true">
+        <span class="tab-icon">🍔</span>
+        <span class="tab-label">PEDIR AHORA</span>
+      </button>
+      <button class="order-tab" data-tab="grupo" aria-pressed="false">
+        <span class="tab-icon">👥</span>
+        <span class="tab-label">RESERVAR GRUPO</span>
+      </button>
+      <button class="order-tab" data-tab="degustacion" aria-pressed="false">
+        <span class="tab-icon">🍽️</span>
+        <span class="tab-label">DEGUSTACIÓN</span>
+      </button>
+    </div>
+
+    <!-- TAB 1: PEDIR AHORA -->
+    <div class="order-panel active" id="panel-pedido">
+      <form class="order-form" id="formPedido">
+        <div class="form-group">
+          <label>Tipo de pedido *</label>
+          <div class="tipo-pedido" id="pedido-tipo">
+            <label class="tipo-option">
+              <input type="radio" name="tipo" value="reparto" checked />
+              <span class="tipo-label">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                Reparto a domicilio
+              </span>
+            </label>
+            <label class="tipo-option">
+              <input type="radio" name="tipo" value="recogida" />
+              <span class="tipo-label">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Recogida en local
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="pedido-nombre">Nombre completo *</label>
+            <input type="text" id="pedido-nombre" name="nombre" required placeholder="Tu nombre" />
+          </div>
+          <div class="form-group">
+            <label for="pedido-telefono">Teléfono *</label>
+            <input type="tel" id="pedido-telefono" name="telefono" required placeholder="+34 600 000 000" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="pedido-plato">Selecciona tu plato *</label>
+            <select id="pedido-plato" name="plato" required>
+              <option value="">— Elige un plato —</option>
+              <option value="K-Pop Smash">Burger Fusión "K-Pop Smash" — 14,90 €</option>
+              <option value="Bao-Bacoa Pulled Pork">Bao-Bacoa Pulled Pork — 12,50 €</option>
+              <option value="Waffle-Chicken Tres Quesos">Waffle-Chicken Tres Quesos — 13,90 €</option>
+              <option value="Sushi Burrito Tulum-Tokyo">Sushi Burrito "Tulum-Tokyo" — 15,50 €</option>
+              <option value="Tacos Three Way">Tacos "Three Way" — 16,50 €</option>
+              <option value="Noodles Cyber Wok">Noodles "Cyber Wok" — 13,50 €</option>
+            </select>
+          </div>
+          <div class="form-group form-group--qty">
+            <label for="pedido-cantidad">Cantidad</label>
+            <input type="number" id="pedido-cantidad" name="cantidad" min="1" value="1" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="pedido-fecha">Fecha *</label>
+            <input type="date" id="pedido-fecha" name="fecha" required />
+          </div>
+          <div class="form-group">
+            <label for="pedido-hora">Hora *</label>
+            <select id="pedido-hora" name="hora" required>
+              <option value="">— Selecciona —</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="pedido-notas">Notas adicionales</label>
+          <textarea id="pedido-notas" name="notas" rows="2" placeholder="Alergias, preferencias, punto de la carne..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="pedido-metodo">Método de pago *</label>
+          <div class="payment-methods" id="pedido-metodo">
+            <label class="payment-option">
+              <input type="radio" name="metodo-pago" value="tarjeta" checked />
+              <span class="payment-label">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="1" y="4" width="22" height="16" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="1" y1="10" x2="23" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
+                Tarjeta
+              </span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="metodo-pago" value="efectivo" />
+              <span class="payment-label">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>
+                Efectivo
+              </span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="metodo-pago" value="bizum" />
+              <span class="payment-label">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="8" font-weight="bold" fill="currentColor">$</text></svg>
+                Bizum
+              </span>
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-cta btn-submit">
+          CONFIRMAR PEDIDO
+        </button>
+      </form>
+    </div>
+
+    <!-- TAB 2: RESERVAR GRUPO -->
+    <div class="order-panel" id="panel-grupo">
+      <form class="order-form" id="formGrupo">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="grupo-nombre">Nombre completo *</label>
+            <input type="text" id="grupo-nombre" name="nombre" required placeholder="Tu nombre" />
+          </div>
+          <div class="form-group">
+            <label for="grupo-email">Email *</label>
+            <input type="email" id="grupo-email" name="email" required placeholder="tu@email.com" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="grupo-telefono">Teléfono *</label>
+            <input type="tel" id="grupo-telefono" name="telefono" required placeholder="+34 600 000 000" />
+          </div>
+          <div class="form-group">
+            <label for="grupo-personas">Número de personas *</label>
+            <input type="number" id="grupo-personas" name="personas" min="6" max="20" value="6" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="grupo-fecha">Fecha *</label>
+            <input type="date" id="grupo-fecha" name="fecha" required />
+          </div>
+          <div class="form-group">
+            <label for="grupo-hora">Hora *</label>
+            <select id="grupo-hora" name="hora" required>
+              <option value="">— Selecciona —</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="grupo-menu">Menú para grupos *</label>
+          <select id="grupo-menu" name="menu" required>
+            <option value="">— Elige un menú —</option>
+            <option value="The Crew">Menú "The Crew" (4-6 pers.) — 24,90 €/pers.</option>
+            <option value="Street Party">Menú "Street Party" (6-8 pers.) — 32,00 €/pers.</option>
+            <option value="The Syndicate">Menú "The Syndicate" (8+ pers.) — 42,00 €/pers.</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="grupo-notas">Notas adicionales</label>
+          <textarea id="grupo-notas" name="notas" rows="2" placeholder="Alergias, celebración especial, requisitos..."></textarea>
+        </div>
+
+        <!-- Resumen y depósito -->
+        <div class="deposit-summary" id="grupo-deposit">
+          <div class="deposit-row">
+            <span>Precio total estimado</span>
+            <span id="grupo-total">—</span>
+          </div>
+          <div class="deposit-row deposit-row--highlight">
+            <span>Seña (20%) a pagar ahora</span>
+            <span id="grupo-sena">—</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Método de pago de la seña *</label>
+          <div class="payment-methods">
+            <label class="payment-option">
+              <input type="radio" name="grupo-metodo-pago" value="tarjeta" checked />
+              <span class="payment-label">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="1" y="4" width="22" height="16" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="1" y1="10" x2="23" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
+                Tarjeta
+              </span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="grupo-metodo-pago" value="bizum" />
+              <span class="payment-label">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="8" font-weight="bold" fill="currentColor">$</text></svg>
+                Bizum
+              </span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="grupo-metodo-pago" value="transferencia" />
+              <span class="payment-label">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="6" width="20" height="12" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="2" y1="10" x2="22" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
+                Transferencia
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-cta btn-submit">
+          PAGAR SEÑA Y RESERVAR
+        </button>
+      </form>
+    </div>
+
+    <!-- TAB 3: DEGUSTACIÓN -->
+    <div class="order-panel" id="panel-degustacion">
+      <form class="order-form" id="formDegustacion">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="deg-nombre">Nombre completo *</label>
+            <input type="text" id="deg-nombre" name="nombre" required placeholder="Tu nombre" />
+          </div>
+          <div class="form-group">
+            <label for="deg-telefono">Teléfono *</label>
+            <input type="tel" id="deg-telefono" name="telefono" required placeholder="+34 600 000 000" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="deg-email">Email</label>
+            <input type="email" id="deg-email" name="email" placeholder="tu@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="deg-personas">Número de personas *</label>
+            <input type="number" id="deg-personas" name="personas" min="1" max="10" value="2" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="deg-menu">Menú degustación *</label>
+            <select id="deg-menu" name="menu" required>
+              <option value="">— Elige un menú —</option>
+              <option value="Street Fusion Tour">Menú "Street Fusion Tour" — 29,90 €/pers.</option>
+              <option value="Chef's Cyber Lab">Menú "Chef's Cyber Lab" — 54,00 € (2 pers.)</option>
+              <option value="Umami Experience">Menú "Umami Experience" — 68,00 € (2 pers.)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="deg-fecha">Fecha *</label>
+            <input type="date" id="deg-fecha" name="fecha" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="deg-hora">Hora *</label>
+            <select id="deg-hora" name="hora" required>
+              <option value="">— Selecciona —</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Resumen y depósito -->
+        <div class="deposit-summary" id="deg-deposit">
+          <div class="deposit-row">
+            <span>Precio total estimado</span>
+            <span id="deg-total">—</span>
+          </div>
+          <div class="deposit-row deposit-row--highlight">
+            <span>Seña (20%) a pagar ahora</span>
+            <span id="deg-sena">—</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Método de pago de la seña *</label>
+          <div class="payment-methods">
+            <label class="payment-option">
+              <input type="radio" name="deg-metodo-pago" value="tarjeta" checked />
+              <span class="payment-label">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="1" y="4" width="22" height="16" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="1" y1="10" x2="23" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
+                Tarjeta
+              </span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="deg-metodo-pago" value="bizum" />
+              <span class="payment-label">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="8" font-weight="bold" fill="currentColor">$</text></svg>
+                Bizum
+              </span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="deg-metodo-pago" value="transferencia" />
+              <span class="payment-label">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="6" width="20" height="12" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="2" y1="10" x2="22" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
+                Transferencia
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-cta btn-submit">
+          PAGAR SEÑA Y RESERVAR
+        </button>
+      </form>
+    </div>
+
+    <div class="order-confirmation" id="orderConfirmation" style="display: none;">
+      <div class="confirmation-card">
+        <div class="confirmation-icon">✓</div>
+        <h3>¡PEDIDO CONFIRMADO!</h3>
+        <p>Hemos recibido tu solicitud. Te confirmaremos por teléfono o email en los próximos minutos.</p>
+        <p class="confirmation-ref" id="confirmationRef"></p>
+        <button class="btn btn-cta" id="btnNuevoPedido">HACER NUEVO PEDIDO</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .order-section {
+    background-color: var(--color-primary);
+    padding: var(--spacing-2xl) 0;
+    scroll-margin-top: 80px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .section-header h2 {
+    color: var(--color-white);
+    font-size: 2.8rem;
+    margin-bottom: var(--spacing-sm);
+    font-family: var(--font-display);
+  }
+
+  .section-header p {
+    color: var(--color-muted);
+    font-size: 1.05rem;
+  }
+
+  /* TABS */
+  .order-tabs {
+    display: flex;
+    gap: 0;
+    justify-content: center;
+    margin-bottom: var(--spacing-xl);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .order-tab {
+    background: transparent;
+    border: none;
+    color: var(--color-muted);
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    position: relative;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+  }
+
+  .order-tab:hover {
+    color: var(--color-white);
+  }
+
+  .order-tab.active {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  .tab-icon {
+    font-size: 1.2rem;
+  }
+
+  .tab-label {
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  /* PANELS */
+  .order-panel {
+    display: none;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .order-panel.active {
+    display: block;
+  }
+
+  /* FORM */
+  .order-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    color: var(--color-white);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    font-family: var(--font-body);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-gray-border);
+    color: var(--color-white);
+    padding: 0.8rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    transition: border-color var(--transition-fast);
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--color-accent);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+  }
+
+  .form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23B0B0C0' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+
+  .form-group select option {
+    background-color: var(--color-surface);
+    color: var(--color-white);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 60px;
+  }
+
+  .form-group--qty {
+    max-width: 120px;
+  }
+
+  /* TIPO PEDIDO */
+  .tipo-pedido {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+  }
+
+  .tipo-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex: 1;
+  }
+
+  .tipo-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .tipo-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-gray-border);
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+  }
+
+  .tipo-option input:checked + .tipo-label {
+    border-color: var(--color-accent);
+    color: var(--color-white);
+    background-color: rgba(255, 94, 54, 0.08);
+  }
+
+  .tipo-label svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  /* PAYMENT METHODS */
+  .payment-methods {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+  }
+
+  .payment-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .payment-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .payment-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-gray-border);
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+  }
+
+  .payment-option input:checked + .payment-label {
+    border-color: var(--color-accent);
+    color: var(--color-white);
+    background-color: rgba(255, 94, 54, 0.08);
+  }
+
+  .payment-label svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  /* DEPOSIT SUMMARY */
+  .deposit-summary {
+    background-color: var(--color-surface);
+    border: 1px solid rgba(255, 94, 54, 0.15);
+    padding: var(--spacing-md);
+  }
+
+  .deposit-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+
+  .deposit-row--highlight {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: 0.3rem;
+    padding-top: 0.8rem;
+    color: var(--color-white);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .deposit-row--highlight span:last-child {
+    color: var(--color-accent);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* SUBMIT BUTTON */
+  .btn-submit {
+    align-self: center;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    margin-top: var(--spacing-sm);
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    transition: all var(--transition-fast);
+  }
+
+  .btn-submit:hover {
+    background-color: var(--color-accent-hover);
+    transform: scale(1.03);
+  }
+
+  /* CONFIRMATION */
+  .order-confirmation {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .confirmation-card {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background-color: var(--color-surface);
+    border: 1px solid rgba(255, 94, 54, 0.15);
+  }
+
+  .confirmation-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: rgba(0, 229, 255, 0.1);
+    color: var(--color-neon-cyan);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-md);
+    font-weight: 700;
+    border: 2px solid var(--color-neon-cyan);
+  }
+
+  .confirmation-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-white);
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: 0.06em;
+  }
+
+  .confirmation-card p {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .confirmation-ref {
+    font-family: var(--font-display);
+    color: var(--color-accent) !important;
+    font-size: 1.2rem !important;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--spacing-lg) !important;
+  }
+
+  #btnNuevoPedido {
+    margin-top: var(--spacing-md);
+  }
+
+  @media (max-width: 768px) {
+    .section-header h2 {
+      font-size: 2rem;
+    }
+
+    .order-tabs {
+      flex-direction: column;
+      align-items: stretch;
+      border-bottom: none;
+    }
+
+    .order-tab {
+      justify-content: center;
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      margin-bottom: 0;
+    }
+
+    .order-tab.active {
+      border-bottom-color: var(--color-accent);
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .payment-methods {
+      flex-direction: column;
+    }
+
+    .btn-submit {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.order-tab');
+    const panels = {
+      pedido: document.getElementById('panel-pedido'),
+      grupo: document.getElementById('panel-grupo'),
+      degustacion: document.getElementById('panel-degustacion')
+    };
+    const confirmation = document.getElementById('orderConfirmation');
+    const confirmationRef = document.getElementById('confirmationRef');
+    const btnNuevo = document.getElementById('btnNuevoPedido');
+
+    const TIME_SLOTS = [
+      '13:00', '13:30', '14:00', '14:30',
+      '20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00'
+    ];
+
+    function getLastSlot(day) {
+      // 0=Dom, 1=Lun, 2=Mar, 3=Mie, 4=Jue, 5=Vie, 6=Sab
+      if (day === 0 || day === 1) return null; // cerrado
+      if (day === 6) return '23:00'; // sábado cierra 00:00, último pedido 23:00
+      return '22:00'; // mar-vie cierran 23:00, último pedido 22:00
+    }
+
+    function getTimeOptions(lastSlot) {
+      if (!lastSlot) return [];
+      const opts = [];
+      for (const slot of TIME_SLOTS) {
+        if (slot <= lastSlot) opts.push(slot);
+      }
+      return opts;
+    }
+
+    function populateTimeSelect(select, slots) {
+      const current = select.value;
+      select.innerHTML = '<option value="">— Selecciona —</option>';
+      slots.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s;
+        opt.textContent = s;
+        select.appendChild(opt);
+      });
+      if (slots.includes(current)) select.value = current;
+    }
+
+    function updateTimeSlotsForDate(dateInput, selectId) {
+      const select = document.getElementById(selectId);
+      if (!select || !dateInput.value) return;
+      const d = new Date(dateInput.value + 'T12:00:00');
+      const lastSlot = getLastSlot(d.getDay());
+      populateTimeSelect(select, getTimeOptions(lastSlot));
+    }
+
+    function setupDateInput(dateId, selectId) {
+      const input = document.getElementById(dateId);
+      if (!input) return;
+      input.addEventListener('change', () => updateTimeSlotsForDate(input, selectId));
+    }
+
+    // Inicializar selects de hora vacíos
+    function initTimeSelects() {
+      const allTimeSelects = ['pedido-hora', 'grupo-hora', 'deg-hora'];
+      allTimeSelects.forEach(id => {
+        const sel = document.getElementById(id);
+        if (sel) sel.innerHTML = '<option value="">— Selecciona fecha primero —</option>';
+      });
+    }
+    initTimeSelects();
+
+    // Vincular fecha→hora
+    setupDateInput('pedido-fecha', 'pedido-hora');
+    setupDateInput('grupo-fecha', 'grupo-hora');
+    setupDateInput('deg-fecha', 'deg-hora');
+
+    // ===== CÁLCULO DE SEÑAS (20%) =====
+    const GRUPO_PRECIOS = {
+      'The Crew': 24.90,
+      'Street Party': 32.00,
+      'The Syndicate': 42.00
+    };
+
+    function calcGrupoSena() {
+      const menu = document.getElementById('grupo-menu').value;
+      const pers = parseInt(document.getElementById('grupo-personas').value) || 0;
+      const totalEl = document.getElementById('grupo-total');
+      const senaEl = document.getElementById('grupo-sena');
+      if (!menu || pers < 6) {
+        totalEl.textContent = '—';
+        senaEl.textContent = '—';
+        return;
+      }
+      const total = GRUPO_PRECIOS[menu] * pers;
+      const sena = total * 0.2;
+      totalEl.textContent = total.toFixed(2) + ' €';
+      senaEl.textContent = sena.toFixed(2) + ' €';
+    }
+
+    document.getElementById('grupo-menu').addEventListener('change', calcGrupoSena);
+    document.getElementById('grupo-personas').addEventListener('input', calcGrupoSena);
+
+    const DEG_PRECIOS = {
+      'Street Fusion Tour': 29.90,
+      "Chef's Cyber Lab": 27.00,
+      'Umami Experience': 34.00
+    };
+
+    function calcDegSena() {
+      const menu = document.getElementById('deg-menu').value;
+      const pers = parseInt(document.getElementById('deg-personas').value) || 0;
+      const totalEl = document.getElementById('deg-total');
+      const senaEl = document.getElementById('deg-sena');
+      if (!menu || pers < 1) {
+        totalEl.textContent = '—';
+        senaEl.textContent = '—';
+        return;
+      }
+      let total;
+      if (menu === "Chef's Cyber Lab" || menu === 'Umami Experience') {
+        total = DEG_PRECIOS[menu] * 2;
+      } else {
+        total = DEG_PRECIOS[menu] * pers;
+      }
+      const sena = total * 0.2;
+      totalEl.textContent = total.toFixed(2) + ' €';
+      senaEl.textContent = sena.toFixed(2) + ' €';
+    }
+
+    document.getElementById('deg-menu').addEventListener('change', calcDegSena);
+    document.getElementById('deg-personas').addEventListener('input', calcDegSena);
+
+    function switchTab(tabId) {
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-pressed', 'false');
+      });
+      const activeTab = document.querySelector(`.order-tab[data-tab="${tabId}"]`);
+      if (activeTab) {
+        activeTab.classList.add('active');
+        activeTab.setAttribute('aria-pressed', 'true');
+      }
+      Object.keys(panels).forEach(key => {
+        panels[key].classList.toggle('active', key === tabId);
+      });
+      confirmation.style.display = 'none';
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        switchTab(tab.dataset.tab);
+      });
+    });
+
+    function resetDepositDisplays() {
+      ['grupo-total', 'grupo-sena', 'deg-total', 'deg-sena'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = '—';
+      });
+    }
+
+    function handleSubmit(formId) {
+      const form = document.getElementById(formId);
+      if (!form) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const ref = 'WK-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
+
+        Object.keys(panels).forEach(key => panels[key].classList.remove('active'));
+        confirmation.style.display = 'block';
+        confirmationRef.textContent = 'Ref: ' + ref;
+
+        form.reset();
+        initTimeSelects();
+        resetDepositDisplays();
+      });
+    }
+
+    handleSubmit('formPedido');
+    handleSubmit('formGrupo');
+    handleSubmit('formDegustacion');
+
+    btnNuevo.addEventListener('click', () => {
+      confirmation.style.display = 'none';
+      switchTab('pedido');
+    });
+
+    // Fecha mínima: mañana
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const minDate = tomorrow.toISOString().split('T')[0];
+    document.querySelectorAll('input[type="date"]').forEach(input => {
+      input.setAttribute('min', minDate);
+    });
+  });
+</script>

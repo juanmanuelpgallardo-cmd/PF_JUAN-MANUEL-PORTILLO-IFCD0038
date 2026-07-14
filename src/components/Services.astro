@@ -25,6 +25,12 @@ const services = [
     description: "Poke bowls fusión con base de arroz sushi o quinoa. Salmón marinado, edamame, mango, aguacate y nuestra salsa especial walker. Frescura y potencia.",
     image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=300&fit=crop",
     icon: "🥗"
+  },
+  {
+    title: "BAOS",
+    description: "Bollos al vapor esponjosos rellenos de cerdo caramelizado, pollo teriyaki o tempura de boniato. Coronados con encurtidos y salsa hoisin. El bocado perfecto.",
+    image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&h=300&fit=crop",
+    icon: "🥟"
   }
 ];
 ---
@@ -86,9 +92,14 @@ const services = [
   }
 
   .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--spacing-lg);
+  }
+
+  .cards-grid > :global(*) {
+    flex: 0 1 280px;
   }
 
   @media (max-width: 768px) {
@@ -97,8 +108,11 @@ const services = [
     }
 
     .cards-grid {
-      grid-template-columns: 1fr;
       gap: var(--spacing-md);
+    }
+
+    .cards-grid > :global(*) {
+      flex: 0 1 100%;
     }
   }
 </style>

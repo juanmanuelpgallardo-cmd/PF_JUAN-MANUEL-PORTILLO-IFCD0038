@@ -2,7 +2,6 @@
 // Componente Menú con filtro isótopo dinámico - 4 categorías
 
 const categorias = [
-  { id: "todo", label: "TODO" },
   { id: "estrella", label: "PLATOS ESTRELLA" },
   { id: "degustacion", label: "DEGUSTACIÓN" },
   { id: "grupos", label: "GRUPOS" },
@@ -61,6 +60,24 @@ const items: MenuItem[] = [
     imagen: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=500&h=350&fit=crop",
     tipo: "best-seller"
   },
+  {
+    categoria: "estrella",
+    nombre: 'Tacos "Three Way"',
+    descripcion: "Trío de tacos asiáticos: short rib al miso, pollo tikka massala y langostino tempura. Cada uno con su salsa y topping característicos. El espectáculo en tu mesa.",
+    precio: "16,50 €",
+    badge: "NOVEDAD",
+    imagen: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=500&h=350&fit=crop",
+    tipo: "best-seller"
+  },
+  {
+    categoria: "estrella",
+    nombre: 'Noodles "Cyber Wok"',
+    descripcion: "Tallarines salteados al wok con verduras crujientes, ternera marinada en salsa de ostras y cacahuete, coronados con huevo frito y cebolla crujiente.",
+    precio: "13,50 €",
+    badge: "NOVEDAD",
+    imagen: "https://images.unsplash.com/photo-1552611052-33e04de1b100?w=500&h=350&fit=crop",
+    tipo: "best-seller"
+  },
 
   // ===== MENÚS DEGUSTACIÓN =====
   {
@@ -93,6 +110,24 @@ const items: MenuItem[] = [
     ],
     destacado: true
   },
+  {
+    categoria: "degustacion",
+    nombre: 'Menú "Umami Experience"',
+    descripcion: "La degustación más exclusiva para los paladares más exigentes. 7 pases con maridaje líquido incluido.",
+    precio: "68,00 € (2 pers.)",
+    imagen: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=350&fit=crop",
+    tipo: "degustacion",
+    incluye: [
+      "Edamame trufado con sal de lava y lima",
+      "Tartar de atún rojo con leche de tigre asiática y chips de wasabi",
+      "Baos de short rib al miso con encurtido de jengibre",
+      "Sushi Burrito Tulum-Tokyo completo",
+      "Waffle-Chicken Tres Quesos",
+      "Poste shooter de maracuyá y cava con espuma de fruta de la pasión",
+      "2 Cócteles de autor o 2 cervezas artesanales"
+    ],
+    destacado: false
+  },
 
   // ===== MENÚS PARA GRUPOS =====
   {
@@ -124,6 +159,23 @@ const items: MenuItem[] = [
     ],
     destacado: true
   },
+  {
+    categoria: "grupos",
+    nombre: 'Menú "Street Party"',
+    descripcion: "De 6 a 8 personas. La fiesta gastronómica perfecta con una selección variada de nuestros best-sellers.",
+    precio: "32,00 €/pers.",
+    imagen: "https://images.unsplash.com/photo-1544148103-0773bf10d330?w=500&h=350&fit=crop",
+    tipo: "grupo",
+    incluye: [
+      "Tabla de baos variados (cerdo, pollo, boniato) para compartir",
+      "2 Sushi Burritos a elegir entre toda la mesa",
+      "4 Burgers Fusión a elección del grupo",
+      "Ración de patatas trufadas con parmesano",
+      "Barra libre de refrescos 60 min",
+      "1 Cóctel de autor por persona"
+    ],
+    destacado: false
+  },
 
   // ===== OFERTAS PARA LLEVAR =====
   {
@@ -151,6 +203,33 @@ const items: MenuItem[] = [
     imagen: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&h=350&fit=crop",
     tipo: "takeaway",
     badge: "10 MIN"
+  },
+  {
+    categoria: "llevar",
+    nombre: 'Pack "Family Fusion"',
+    descripcion: "Para 4 personas. 4 burgers o baos a elegir + 2 patatas grandes + 4 bebidas + 4 postes shooters. Ideal para cenar en casa.",
+    precio: "39,90 €",
+    imagen: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=350&fit=crop",
+    tipo: "takeaway",
+    badge: "FAMILIA"
+  },
+  {
+    categoria: "llevar",
+    nombre: 'Combo "Brunch Walker"',
+    descripcion: "Sábados y Domingos 10:00-14:00. Waffle-Chicken o bao de desayuno + huevo poché + cold brew o smoothie.",
+    precio: "9,90 €",
+    imagen: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=500&h=350&fit=crop",
+    tipo: "takeaway",
+    badge: "BRUNCH"
+  },
+  {
+    categoria: "llevar",
+    nombre: '"Late Night Box"',
+    descripcion: "Viernes y Sábados de 22:00 a 02:00. 2 sushi burritos pequeños + patatas bravas fusión + 2 bebidas.",
+    precio: "16,90 €",
+    imagen: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&h=350&fit=crop",
+    tipo: "takeaway",
+    badge: "LATE NIGHT"
   }
 ];
 ---
@@ -220,9 +299,7 @@ const items: MenuItem[] = [
 
               {item.categoria === "grupos" ? (
                 <a
-                  href="https://wa.me/34912345678"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#pedir"
                   class="btn btn-cta btn-whatsapp"
                 >
                   RESERVAR PARA MI GRUPO
@@ -462,7 +539,7 @@ const items: MenuItem[] = [
     cursor: pointer;
     transition: all var(--transition-fast);
     text-transform: uppercase;
-    white-space: nowrap;
+    word-break: break-word;
   }
 
   .btn-cta:hover {
@@ -566,7 +643,7 @@ const items: MenuItem[] = [
 </style>
 
   <script>
-  // Filtro isótopo dinámico
+  // Filtro dinámico
   document.addEventListener('DOMContentLoaded', () => {
     const tabs = document.querySelectorAll('.filter-btn');
     const items = document.querySelectorAll('.menu-card');
@@ -580,9 +657,12 @@ const items: MenuItem[] = [
 
         items.forEach(item => {
           const categoria = item.dataset.categoria;
-          item.classList.toggle('filter-hidden', filter !== 'todo' && categoria !== filter);
+          item.classList.toggle('filter-hidden', categoria !== filter);
         });
       });
     });
+
+    // Mostrar todos por defecto
+    tabs.forEach(t => t.setAttribute('aria-pressed', 'false'));
   });
 </script>

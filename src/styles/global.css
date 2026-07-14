@@ -1,28 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+}
+
 /* VARIABLES DE DISEÑO */
 :root {
-  /* Colores principales - Dark Mode Cyber-Gourmet */
-  --color-primary: #0D0D11;
-  --color-primary-dark: #09090C;
-  --color-surface: #1A1A24;
-  --color-surface-hover: #22222E;
-  
-  /* Acentos neón */
-  --color-accent: #FF5E36;
-  --color-accent-hover: #FF7A4A;
-  --color-neon-cyan: #00E5FF;
+  /* Paleta Cromática Oficial The Walkers */
+  --color-negro-carbon: #121212;
+  --color-gris-asfalto: #1E1E1E;
+  --color-naranja-fuego: #FF4A1C;
+  --color-azul-electrico: #00E5FF;
+  --color-blanco-puro: #FFFFFF;
+  --color-gris-ceniza: #E0E0E0;
+
+  /* Estructura Tipográfica Requerida */
+  --fuente-titulares: 'Bebas Neue', 'Impact', sans-serif;
+  --fuente-cuerpo: 'Montserrat', 'Helvetica Neue', sans-serif;
+
+  /* Alias compatibilidad con componentes existentes */
+  --color-primary: var(--color-negro-carbon);
+  --color-primary-dark: #0D0D11;
+  --color-surface: var(--color-gris-asfalto);
+  --color-surface-hover: #262626;
+  --color-accent: var(--color-naranja-fuego);
+  --color-accent-hover: #FF5E2E;
+  --color-neon-cyan: var(--color-azul-electrico);
   --color-neon-cyan-hover: #33EAFF;
-  
-  /* Neutrales */
-  --color-dark: #0D0D11;
-  --color-gray-light: #1A1A24;
+  --color-dark: var(--color-negro-carbon);
+  --color-gray-light: var(--color-gris-asfalto);
   --color-gray-border: #2A2A3A;
-  --color-white: #FFFFFF;
-  --color-muted: #B0B0C0;
-  
-  /* Tipografía */
-  --font-display: 'Anton', 'Impact', sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, 'Segoe UI', sans-serif;
-  
+  --color-white: var(--color-blanco-puro);
+  --color-muted: var(--color-gris-ceniza);
+  --font-display: var(--fuente-titulares);
+  --font-body: var(--fuente-cuerpo);
+
   /* Espaciado */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
@@ -30,86 +54,38 @@
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
   --spacing-2xl: 4rem;
-  
+
   /* Bordes */
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
-  
+
   /* Sombras */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  
+
   /* Transiciones */
   --transition-fast: 150ms ease-in-out;
   --transition-normal: 300ms ease-in-out;
 }
 
-/* RESET Y BASE */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* TARJETAS DE PILARES (estructura requerida) */
+.tarjeta-pilar {
+  background-color: var(--color-gris-asfalto);
+  border: 1px solid var(--color-negro-carbon);
+  font-family: var(--fuente-cuerpo);
+  color: var(--color-gris-ceniza);
 }
 
-html {
-  scroll-behavior: smooth;
+.titulo-pilar {
+  font-family: var(--fuente-titulares);
+  color: var(--color-blanco-puro);
+  letter-spacing: 1px;
 }
 
-body {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--color-muted);
-  background-color: var(--color-primary);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* TIPOGRAFÍA */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 1.1;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--color-white);
-}
-
-h1 {
-  font-size: 3.5rem;
-}
-
-h2 {
-  font-size: 2.5rem;
-}
-
-h3 {
-  font-size: 1.5rem;
-}
-
-h4 {
-  font-size: 1.25rem;
-}
-
-p {
-  margin-bottom: var(--spacing-md);
-}
-
-/* ENLACES */
-a {
-  color: var(--color-accent);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-a:hover {
-  color: var(--color-accent-hover);
-}
+/* Tailwind Preflight ya aplica reset y estilos base */
 
 /* BOTONES */
 .btn {
@@ -121,27 +97,27 @@ a:hover {
   cursor: pointer;
   transition: all var(--transition-fast);
   border: none;
-  font-family: var(--font-display);
+  font-family: var(--fuente-titulares);
   font-size: 1.1rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 1px;
 }
 
 .btn-primary {
-  background-color: var(--color-accent);
-  color: var(--color-white);
-  box-shadow: 0 0 20px rgba(255, 94, 54, 0.3);
+  background-color: var(--color-naranja-fuego);
+  color: var(--color-blanco-puro);
+  box-shadow: 0 0 20px rgba(255, 74, 28, 0.3);
 }
 
 .btn-primary:hover {
   background-color: var(--color-accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(255, 94, 54, 0.5);
+  box-shadow: 0 0 30px rgba(255, 74, 28, 0.5);
 }
 
 .btn-secondary {
-  background-color: var(--color-neon-cyan);
-  color: var(--color-primary);
+  background-color: var(--color-azul-electrico);
+  color: var(--color-negro-carbon);
   box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
 }
 
@@ -152,20 +128,20 @@ a:hover {
 }
 
 .btn-outline {
-  border: 2px solid var(--color-neon-cyan);
-  color: var(--color-neon-cyan);
+  border: 2px solid var(--color-azul-electrico);
+  color: var(--color-azul-electrico);
   background-color: transparent;
 }
 
 .btn-outline:hover {
-  background-color: var(--color-neon-cyan);
-  color: var(--color-primary);
+  background-color: var(--color-azul-electrico);
+  color: var(--color-negro-carbon);
   box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
 }
 
 /* CONTENEDOR */
 .container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 0 var(--spacing-md);
 }
@@ -176,24 +152,24 @@ section {
 }
 
 section:nth-child(even) {
-  background-color: var(--color-surface);
+  background-color: var(--color-gris-asfalto);
 }
 
-/* GRID */
-.grid {
+/* GRID (prefijo walker- para evitar conflicto con Tailwind) */
+.walker-grid {
   display: grid;
   gap: var(--spacing-lg);
 }
 
-.grid-2 {
+.walker-grid-2 {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-.grid-3 {
+.walker-grid-3 {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.grid-4 {
+.walker-grid-4 {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
@@ -201,15 +177,15 @@ section:nth-child(even) {
   h1 {
     font-size: 2.2rem;
   }
-  
+
   h2 {
     font-size: 1.8rem;
   }
-  
+
   section {
     padding: var(--spacing-xl) 0;
   }
-  
+
   .grid-2,
   .grid-3,
   .grid-4 {
@@ -217,19 +193,12 @@ section:nth-child(even) {
   }
 }
 
-/* IMÁGENES */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
 /* SCROLL SUAVE */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  
+
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

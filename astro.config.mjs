@@ -1,15 +1,12 @@
 import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
 
+// https://astro.build/config
 export default defineConfig({
-  // Disable dev toolbar
-  devToolbar: {
-    enabled: false
-  },
-  
-  // Enable strict mode for better error detection
+  integrations: [tailwind()],
   vite: {
     ssr: {
-      external: ['svgo']
-    }
-  }
+      external: ['svgo'],
+    },
+  },
 });
