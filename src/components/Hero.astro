@@ -1,33 +1,38 @@
 ---
-// Componente Hero profesional con imagen de fondo
+// Componente Hero cyber-street food - The Walkers
 ---
 
 <section id="inicio" class="hero">
+  {/* Video de fondo */}
+  <div class="hero-video-wrapper">
+    <video 
+      class="hero-video" 
+      autoplay 
+      muted 
+      loop 
+      playsinline
+      poster="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1920&h=1080&fit=crop"
+    >
+      <source src="https://videos.pexels.com/video-files/3129954/3129954-uhd_2560_1440_30fps.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-overlay"></div>
+  </div>
+
+  {/* Contenido */}
   <div class="hero-content">
     <div class="container">
-      <div class="hero-grid">
-        {/* Contenido de texto */}
-        <div class="hero-text">
-          <h1 class="hero-title">
-            Experiencias Gastronómicas Inolvidables
-          </h1>
-          <p class="hero-subtitle">
-            Descubre la excelencia en cada plato. Nuestro equipo de expertos te ofrece 
-            una experiencia culinaria única combinando tradición e innovación.
-          </p>
-          <div class="hero-buttons">
-            <button class="btn btn-primary">Explorar Menú</button>
-            <button class="btn btn-outline">Reservar Mesa</button>
-          </div>
-        </div>
-
-        {/* Imagen Hero */}
-        <div class="hero-image">
-          <img 
-            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=600&fit=crop" 
-            alt="Plato gourmet presentado de forma profesional"
-            loading="lazy"
-          />
+      <div class="hero-inner">
+        <p class="hero-badge">🔥 THE WALKERS</p>
+        <h1 class="hero-title">
+          SABOR <span class="hero-neon">CALLEJERO</span><br />
+          TÉCNICA DE <span class="hero-cyan">AUTOR</span>
+        </h1>
+        <p class="hero-subtitle">
+          Rolls fusión · Tacos asiáticos · Burgers gourmet · Bowls
+        </p>
+        <div class="hero-buttons">
+          <a href="#pedir" class="btn btn-primary btn-hero">¡PIDE YA!</a>
+          <a href="#carta" class="btn btn-outline btn-hero-outline">VER CARTA</a>
         </div>
       </div>
     </div>
@@ -41,76 +46,117 @@
 
 <style>
   .hero {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-    color: var(--color-white);
     position: relative;
     overflow: hidden;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color: var(--color-white);
+    padding: 0;
+  }
+
+  .hero-video-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(13, 13, 17, 0.85) 0%,
+      rgba(13, 13, 17, 0.6) 50%,
+      rgba(13, 13, 17, 0.9) 100%
+    );
   }
 
   .hero-content {
+    position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
     flex: 1;
   }
 
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-2xl);
-    align-items: center;
+  .hero-inner {
+    max-width: 850px;
+    text-align: center;
+    margin: 0 auto;
   }
 
-  .hero-text {
-    z-index: 2;
+  .hero-badge {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid rgba(255, 94, 54, 0.3);
+    padding: 0.5rem 1.5rem;
+    backdrop-filter: blur(4px);
   }
 
   .hero-title {
-    font-size: 3.5rem;
+    font-size: 5rem;
     margin-bottom: var(--spacing-lg);
-    font-weight: 800;
+    font-weight: 400;
     line-height: 1.1;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: var(--color-white);
+    text-transform: uppercase;
+  }
+
+  .hero-neon {
+    color: var(--color-accent);
+    text-shadow: 0 0 30px rgba(255, 94, 54, 0.4);
+  }
+
+  .hero-cyan {
+    color: var(--color-neon-cyan);
+    text-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
   }
 
   .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     margin-bottom: var(--spacing-xl);
-    line-height: 1.8;
-    opacity: 0.95;
+    line-height: 1.7;
+    font-weight: 400;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   .hero-buttons {
     display: flex;
     gap: var(--spacing-md);
     flex-wrap: wrap;
+    justify-content: center;
   }
 
-  .hero-image {
-    position: relative;
-    z-index: 3;
+  .btn-hero {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
   }
 
-  .hero-image img {
-    border-radius: var(--radius-xl);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    animation: float 6s ease-in-out infinite;
+  .btn-hero-outline {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
   }
 
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-
-  /* Indicador de scroll */
   .scroll-indicator {
     position: absolute;
     bottom: 2rem;
@@ -124,7 +170,7 @@
     display: block;
     width: 24px;
     height: 40px;
-    border: 2px solid rgba(255, 255, 255, 0.7);
+    border: 2px solid rgba(0, 229, 255, 0.4);
     border-radius: 12px;
     position: relative;
     margin: 0 auto;
@@ -137,7 +183,7 @@
     left: 50%;
     width: 2px;
     height: 6px;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 229, 255, 0.5);
     border-radius: 2px;
     transform: translateX(-50%);
     animation: scroll 2s infinite;
@@ -156,27 +202,20 @@
 
   @keyframes bounce {
     0%, 100% {
-      opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
     50% {
-      opacity: 0.5;
+      transform: translateX(-50%) translateY(-8px);
     }
   }
 
-  /* Responsive */
   @media (max-width: 768px) {
     .hero {
-      min-height: auto;
-      padding: var(--spacing-2xl) 0;
-    }
-
-    .hero-grid {
-      grid-template-columns: 1fr;
-      gap: var(--spacing-xl);
+      min-height: 90vh;
     }
 
     .hero-title {
-      font-size: 2rem;
+      font-size: 2.8rem;
     }
 
     .hero-subtitle {
@@ -185,16 +224,13 @@
 
     .hero-buttons {
       flex-direction: column;
+      align-items: center;
     }
 
-    .btn {
+    .btn-hero,
+    .btn-hero-outline {
       width: 100%;
-    }
-
-    .hero-image img {
-      max-height: 400px;
-      width: 100%;
-      object-fit: cover;
+      max-width: 320px;
     }
 
     .scroll-indicator {
@@ -204,12 +240,12 @@
 
   @media (max-width: 480px) {
     .hero-title {
-      font-size: 1.75rem;
+      font-size: 2rem;
     }
 
-    .hero-subtitle {
-      font-size: 0.95rem;
-      margin-bottom: var(--spacing-md);
+    .hero-badge {
+      font-size: 0.7rem;
+      padding: 0.4rem 1rem;
     }
   }
 </style>

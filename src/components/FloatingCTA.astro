@@ -1,0 +1,54 @@
+---
+// Botón flotante ¡PIDE YA! - The Walkers
+---
+
+<a href="#pedir" class="floating-cta" aria-label="Pide ya">
+  <span class="floating-cta-text">¡PIDE YA!</span>
+</a>
+
+<style>
+  .floating-cta {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    padding: 1rem 1.8rem;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    box-shadow: 0 4px 25px rgba(255, 94, 54, 0.4);
+    transition: all var(--transition-normal);
+    animation: pulse-cta 2s infinite;
+    border: none;
+    cursor: pointer;
+  }
+
+  .floating-cta:hover {
+    background-color: var(--color-accent-hover);
+    transform: scale(1.05);
+    box-shadow: 0 6px 35px rgba(255, 94, 54, 0.6);
+    color: var(--color-white);
+  }
+
+  @keyframes pulse-cta {
+    0%, 100% {
+      box-shadow: 0 4px 25px rgba(255, 94, 54, 0.4);
+    }
+    50% {
+      box-shadow: 0 4px 35px rgba(255, 94, 54, 0.7);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .floating-cta {
+      bottom: 1rem;
+      right: 1rem;
+      padding: 0.8rem 1.4rem;
+      font-size: 1rem;
+    }
+  }
+</style>

@@ -3,28 +3,28 @@ import Card from './Card.astro';
 
 const services = [
   {
-    title: "Menú Degustación",
-    description: "Una selección curada de nuestros mejores platos, diseñada para ofrecer una experiencia completa de sabores y técnicas culinarias modernas.",
+    title: "ROLLS FUSIÓN",
+    description: "Sushi reimaginado con ingredientes de autor. Rolls crujientes, bañados en salsas asiáticas con un toque mediterráneo que te sorprenderá.",
+    image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=500&h=300&fit=crop",
+    icon: "🥟"
+  },
+  {
+    title: "TACOS ASIÁTICOS",
+    description: "La fusión definitiva: tortilla de maíz con rellenos orientales. Short rib al miso, pollo tikka massala, tempura de langostino. Una explosión de sabor.",
+    image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=500&h=300&fit=crop",
+    icon: "🌮"
+  },
+  {
+    title: "BURGERS GOURMET",
+    description: "Vacuno madurado, pan brioche artesano, salsas de autor. Smash burger con kimchi, teriyaki con foie, y nuestra icónica burger wasabi-mango.",
+    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&h=300&fit=crop",
+    icon: "🍔"
+  },
+  {
+    title: "BOWLS",
+    description: "Poke bowls fusión con base de arroz sushi o quinoa. Salmón marinado, edamame, mango, aguacate y nuestra salsa especial walker. Frescura y potencia.",
     image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=300&fit=crop",
-    icon: "🍽️"
-  },
-  {
-    title: "Eventos Privados",
-    description: "Organiza tu celebración especial en nuestras instalaciones. Contamos con espacios elegantes y equipo profesional para eventos memorables.",
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    icon: "🎉"
-  },
-  {
-    title: "Catering Empresarial",
-    description: "Servicios de catering personalizados para reuniones y eventos corporativos. Menús adaptados a tus necesidades y presupuesto.",
-    image: "https://images.unsplash.com/photo-1616734755909-bb016ce64930?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    icon: "👔"
-  },
-  {
-    title: "Clases de Cocina",
-    description: "Aprende técnicas culinarias de nuestros chefs. Cursos prácticos e interactivos para todos los niveles de experiencia.",
-    image: "https://images.unsplash.com/photo-1736240844268-622147e570d4?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    icon: "👨‍🍳"
+    icon: "🥗"
   }
 ];
 ---
@@ -32,8 +32,9 @@ const services = [
 <section id="servicios" class="services">
   <div class="container">
     <div class="section-header">
-      <h2>Nuestros Servicios</h2>
-      <p>Descubre todas las experiencias que tenemos preparadas para ti</p>
+      <p class="section-badge">NUESTRA CARTA</p>
+      <h2>FUSIÓN URBANA</h2>
+      <p>Street food de autor con ingredientes selectos y técnica de vanguardia</p>
     </div>
 
     <div class="cards-grid">
@@ -51,7 +52,7 @@ const services = [
 
 <style>
   .services {
-    background-color: var(--color-gray-light);
+    background-color: var(--color-primary);
   }
 
   .section-header {
@@ -59,15 +60,28 @@ const services = [
     margin-bottom: var(--spacing-2xl);
   }
 
+  .section-badge {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+  }
+
   .section-header h2 {
     margin-bottom: var(--spacing-md);
-    color: var(--color-dark);
+    color: var(--color-white);
+    font-family: var(--font-display);
+    font-size: 2.8rem;
   }
 
   .section-header p {
-    font-size: 1.1rem;
-    color: #6b7280;
-    max-width: 500px;
+    font-size: 1.05rem;
+    color: var(--color-muted);
+    max-width: 550px;
     margin: 0 auto;
   }
 
@@ -79,7 +93,7 @@ const services = [
 
   @media (max-width: 768px) {
     .section-header h2 {
-      font-size: 1.75rem;
+      font-size: 2rem;
     }
 
     .cards-grid {

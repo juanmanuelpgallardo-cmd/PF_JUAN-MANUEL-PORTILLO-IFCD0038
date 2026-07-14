@@ -1,20 +1,27 @@
 /* VARIABLES DE DISEÑO */
 :root {
-  /* Colores principales */
-  --color-primary: #2563eb;
-  --color-primary-dark: #1e40af;
-  --color-secondary: #f97316;
-  --color-accent: #06b6d4;
+  /* Colores principales - Dark Mode Cyber-Gourmet */
+  --color-primary: #0D0D11;
+  --color-primary-dark: #09090C;
+  --color-surface: #1A1A24;
+  --color-surface-hover: #22222E;
+  
+  /* Acentos neón */
+  --color-accent: #FF5E36;
+  --color-accent-hover: #FF7A4A;
+  --color-neon-cyan: #00E5FF;
+  --color-neon-cyan-hover: #33EAFF;
   
   /* Neutrales */
-  --color-dark: #1f2937;
-  --color-gray-light: #f3f4f6;
-  --color-gray-border: #e5e7eb;
-  --color-white: #ffffff;
+  --color-dark: #0D0D11;
+  --color-gray-light: #1A1A24;
+  --color-gray-border: #2A2A3A;
+  --color-white: #FFFFFF;
+  --color-muted: #B0B0C0;
   
   /* Tipografía */
-  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Anton', 'Impact', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, 'Segoe UI', sans-serif;
   
   /* Espaciado */
   --spacing-xs: 0.5rem;
@@ -57,8 +64,8 @@ body {
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--color-dark);
-  background-color: var(--color-white);
+  color: var(--color-muted);
+  background-color: var(--color-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -66,18 +73,19 @@ body {
 /* TIPOGRAFÍA */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.2;
+  font-weight: 400;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-white);
 }
 
 h1 {
-  font-size: 3rem;
-  letter-spacing: -0.02em;
+  font-size: 3.5rem;
 }
 
 h2 {
-  font-size: 2rem;
-  letter-spacing: -0.01em;
+  font-size: 2.5rem;
 }
 
 h3 {
@@ -94,60 +102,65 @@ p {
 
 /* ENLACES */
 a {
-  color: var(--color-primary);
+  color: var(--color-accent);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 a:hover {
-  color: var(--color-primary-dark);
+  color: var(--color-accent-hover);
 }
 
 /* BOTONES */
 .btn {
   display: inline-block;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: var(--radius-md);
-  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 0;
+  font-weight: 700;
   text-align: center;
   cursor: pointer;
   transition: all var(--transition-fast);
   border: none;
-  font-family: var(--font-body);
-  font-size: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
+  background-color: var(--color-accent);
   color: var(--color-white);
+  box-shadow: 0 0 20px rgba(255, 94, 54, 0.3);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-accent-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 0 30px rgba(255, 94, 54, 0.5);
 }
 
 .btn-secondary {
-  background-color: var(--color-secondary);
-  color: var(--color-white);
+  background-color: var(--color-neon-cyan);
+  color: var(--color-primary);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
 }
 
 .btn-secondary:hover {
-  background-color: #ea6317;
+  background-color: var(--color-neon-cyan-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.5);
 }
 
 .btn-outline {
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
+  border: 2px solid var(--color-neon-cyan);
+  color: var(--color-neon-cyan);
   background-color: transparent;
 }
 
 .btn-outline:hover {
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: var(--color-neon-cyan);
+  color: var(--color-primary);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
 }
 
 /* CONTENEDOR */
@@ -163,7 +176,7 @@ section {
 }
 
 section:nth-child(even) {
-  background-color: var(--color-gray-light);
+  background-color: var(--color-surface);
 }
 
 /* GRID */
@@ -186,11 +199,11 @@ section:nth-child(even) {
 
 @media (max-width: 768px) {
   h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   
   section {

@@ -1,0 +1,210 @@
+---
+// Componente Nuestra Esencia - 4 pilares versión street food cyber
+
+const pilares = [
+  {
+    title: "SABOR AUTÉNTICO",
+    description: "Respetamos las raíces de la cocina callejera global. Cada bocado guarda la esencia del street food tradicional con un toque único que potencia el sabor real de cada ingrediente.",
+    icon: "mortero"
+  },
+  {
+    title: "TÉCNICA MODERNA",
+    description: "Aplicamos innovación en cada textura, temperatura y presentación. La cocina de vanguardia nos permite sorprender con combinaciones que elevan el fast food a otro nivel.",
+    icon: "llama"
+  },
+  {
+    title: "INGREDIENTES SELECTOS",
+    description: "Elegimos solo materias primas frescas y de temporada. Nuestra red de proveedores garantiza la máxima calidad desde el origen hasta tu takeaway.",
+    icon: "hoja"
+  },
+  {
+    title: "ATENCIÓN IMPECABLE",
+    description: "Creamos momentos memorables a la velocidad de la calle. Cada pedido está cuidado al detalle para que tu experiencia sea rápida, fácil e inolvidable.",
+    icon: "manos"
+  }
+];
+---
+
+<section id="esencia" class="esencia">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-badge">NUESTRA FILOSOFÍA</p>
+      <h2 class="section-title">NUESTRA ESENCIA</h2>
+      <p class="section-subtitle">
+        Cuatro pilares que nos definen y guían cada creación en nuestra cocina fusión
+      </p>
+    </div>
+
+    <div class="esencia-grid">
+      {pilares.map((pilar) => (
+        <article class="pilar-card">
+          <div class="pilar-icon-wrapper">
+            {
+              pilar.icon === "mortero" ? (
+                <svg class="pilar-icon" viewBox="0 0 48 48" fill="none">
+                  <path d="M14 30C14 30 10 26 10 22C10 18 14 14 18 14C22 14 26 18 26 22C26 26 22 30 22 30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M14 30H22L20 38H16L14 30Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M8 38H28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M18 14V10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M14 14L12 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M22 14L24 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              ) : pilar.icon === "llama" ? (
+                <svg class="pilar-icon" viewBox="0 0 48 48" fill="none">
+                  <path d="M24 44C30 44 36 38 36 30C36 22 30 16 24 10C18 16 12 22 12 30C12 38 18 44 24 44Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M24 10C24 10 20 16 20 22C20 26 22 28 24 28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M24 10C24 10 28 16 28 22C28 26 26 28 24 28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M24 28V36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M20 34H28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              ) : pilar.icon === "hoja" ? (
+                <svg class="pilar-icon" viewBox="0 0 48 48" fill="none">
+                  <path d="M24 44C24 44 38 34 38 16C38 8 32 4 24 4C16 4 10 8 10 16C10 34 24 44 24 44Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M24 4V20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M16 12C16 12 20 16 24 16C28 16 32 12 32 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M18 24C18 24 22 26 24 24C26 22 30 24 30 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              ) : (
+                <svg class="pilar-icon" viewBox="0 0 48 48" fill="none">
+                  <path d="M14 20C14 20 10 24 10 30V36H16V30C16 24 14 20 14 20Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M34 20C34 20 38 24 38 30V36H32V30C32 24 34 20 34 20Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M24 20C24 20 20 24 20 30V40H28V30C28 24 24 20 24 20Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M8 36H40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M20 10C20 6 24 4 24 4C24 4 28 6 28 10V20H20V10Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                </svg>
+              )
+            }
+          </div>
+          <h3 class="pilar-title">{pilar.title}</h3>
+          <p class="pilar-description">{pilar.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .esencia {
+    background-color: var(--color-primary);
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    color: var(--color-white);
+    margin-bottom: var(--spacing-md);
+    letter-spacing: 0.06em;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-muted);
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .esencia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  .pilar-card {
+    background-color: var(--color-surface);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    text-align: center;
+    transition: all var(--transition-normal);
+    border: 1px solid rgba(255, 94, 54, 0.12);
+  }
+
+  .pilar-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 25px rgba(255, 94, 54, 0.15);
+    background-color: var(--color-surface-hover);
+  }
+
+  .pilar-icon-wrapper {
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-lg);
+    transition: all var(--transition-normal);
+    border: 2px solid rgba(255, 94, 54, 0.15);
+  }
+
+  .pilar-card:hover .pilar-icon-wrapper {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 20px rgba(255, 94, 54, 0.2);
+  }
+
+  .pilar-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--color-accent);
+  }
+
+  .pilar-card:hover .pilar-icon {
+    color: var(--color-neon-cyan);
+  }
+
+  .pilar-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--color-white);
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: 0.06em;
+  }
+
+  .pilar-description {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .esencia-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+    }
+
+    .esencia-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .pilar-card {
+      padding: var(--spacing-lg) var(--spacing-md);
+    }
+  }
+</style>

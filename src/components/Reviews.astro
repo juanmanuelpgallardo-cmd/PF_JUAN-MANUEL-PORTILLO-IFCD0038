@@ -1,32 +1,32 @@
 ---
-// Componente Reviews con testimonios de clientes
+// Componente Reviews cyber - The Walkers
 
 const reviews = [
   {
-    name: "María García",
-    role: "Bloguera de gastronomía",
-    content: "Una experiencia absolutamente excepcional. La combinación de sabores es magistral y la presentación de cada plato es una obra de arte. Volveré sin dudarlo.",
+    name: "MARÍA GARCÍA",
+    role: "BLOGUERA GASTRONÓMICA",
+    content: "Los rolls fusión son una locura. El contraste de texturas y sabores me voló la cabeza. Y el ambiente oscuro con luces neón es perfecto para cenas informales pero con estilo.",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
   },
   {
-    name: "Carlos López",
-    role: "Director empresarial",
-    content: "Llevé a mis clientes importantes a eventos privados. El servicio impecable, la comida exquisita y la atmósfera perfecta. Recomendación de 10/10.",
+    name: "CARLOS LÓPEZ",
+    role: "DIRECTOR EMPRESARIAL",
+    content: "Pedí para llevar a la oficina y todos fliparon. La burger wasabi-mango es adictiva. Comida rápida de verdad, pero con una calidad que no esperas de un takeaway.",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
   },
   {
-    name: "Laura Martínez",
-    role: "Fotógrafa profesional",
-    content: "Los platos son tan hermosos que no pude dejar de fotografiarlos. La calidad de los ingredientes brilla en cada bocado. Realmente impresionante.",
+    name: "LAURA MARTÍNEZ",
+    role: "FOOD PHOTOGRAPHER",
+    content: "Los tacos asiáticos son fotogénicos y deliciosos. Me encanta que usen ingredientes frescos y se note. Por fin un sitio que entiende el street food de verdad.",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
   },
   {
-    name: "Miguel Rodríguez",
-    role: "Chef independiente",
-    content: "Como profesional de la cocina, debo admitir que están haciendo un trabajo excepcional. La técnica, la creatividad y la pasión se sienten en cada plato.",
+    name: "MIGUEL RODRÍGUEZ",
+    role: "CHEF DE COCINA FUSIÓN",
+    content: "Como cocinero, valoro cuando un sitio hace bien la fusión. The Walkers lo clava: respeta las bases pero se atreve a innovar. El poke bowl es de lo mejor que he probado.",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop"
   }
@@ -36,8 +36,9 @@ const reviews = [
 <section id="testimonios" class="reviews">
   <div class="container">
     <div class="section-header">
-      <h2>Lo que Dicen Nuestros Clientes</h2>
-      <p>Testimonios auténticos de personas que han disfrutado nuestra experiencia</p>
+      <p class="section-badge">RESEÑAS</p>
+      <h2>LO QUE DICEN</h2>
+      <p>Opiniones reales de quienes ya han probado nuestra fusión urbana</p>
     </div>
 
     <div class="reviews-grid">
@@ -73,7 +74,7 @@ const reviews = [
 
 <style>
   .reviews {
-    background-color: var(--color-white);
+    background-color: var(--color-surface);
   }
 
   .section-header {
@@ -81,15 +82,28 @@ const reviews = [
     margin-bottom: var(--spacing-2xl);
   }
 
+  .section-badge {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+  }
+
   .section-header h2 {
     margin-bottom: var(--spacing-md);
-    color: var(--color-dark);
+    color: var(--color-white);
+    font-family: var(--font-display);
+    font-size: 2.8rem;
   }
 
   .section-header p {
-    font-size: 1.1rem;
-    color: #6b7280;
-    max-width: 500px;
+    font-size: 1.05rem;
+    color: var(--color-muted);
+    max-width: 550px;
     margin: 0 auto;
   }
 
@@ -100,16 +114,17 @@ const reviews = [
   }
 
   .review-card {
-    background-color: var(--color-gray-light);
-    border-radius: var(--radius-lg);
+    background-color: var(--color-primary);
     padding: var(--spacing-lg);
-    border-left: 4px solid var(--color-secondary);
+    border-left: 4px solid var(--color-accent);
     transition: all var(--transition-normal);
+    border: 1px solid rgba(255, 94, 54, 0.1);
   }
 
   .review-card:hover {
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 0 20px rgba(255, 94, 54, 0.1);
     transform: translateY(-4px);
+    border-left-color: var(--color-neon-cyan);
   }
 
   .review-header {
@@ -122,8 +137,8 @@ const reviews = [
   .review-avatar {
     width: 48px;
     height: 48px;
-    border-radius: 50%;
     object-fit: cover;
+    filter: grayscale(30%);
   }
 
   .review-info {
@@ -133,13 +148,17 @@ const reviews = [
   .review-name {
     font-size: 1rem;
     margin-bottom: 2px;
-    color: var(--color-dark);
+    color: var(--color-white);
+    font-family: var(--font-display);
+    letter-spacing: 0.06em;
   }
 
   .review-role {
-    font-size: 0.85rem;
-    color: #9ca3af;
+    font-size: 0.75rem;
+    color: var(--color-muted);
     margin: 0;
+    letter-spacing: 0.1em;
+    font-weight: 600;
   }
 
   .review-stars {
@@ -149,22 +168,21 @@ const reviews = [
   }
 
   .star {
-    color: var(--color-secondary);
+    color: var(--color-accent);
     font-size: 1.2rem;
   }
 
   .review-content {
-    color: #374151;
-    font-size: 0.95rem;
+    color: var(--color-muted);
+    font-size: 0.9rem;
     line-height: 1.7;
     margin: 0;
     font-style: italic;
   }
 
-  /* Responsive */
   @media (max-width: 768px) {
     .section-header h2 {
-      font-size: 1.75rem;
+      font-size: 2rem;
     }
 
     .reviews-grid {
