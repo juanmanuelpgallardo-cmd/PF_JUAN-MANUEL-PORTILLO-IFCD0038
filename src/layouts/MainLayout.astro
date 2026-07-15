@@ -23,12 +23,14 @@ const { title = 'The Walkers | Street Food Fusión', description = 'Sabor callej
 
   </head>
   <body>
-    <Header />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-    <FloatingCTA />
+    <div class="page-wrapper">
+      <Header />
+      <main>
+        <slot />
+      </main>
+      <Footer />
+      <FloatingCTA />
+    </div>
   </body>
 </html>
 
@@ -39,11 +41,16 @@ const { title = 'The Walkers | Street Food Fusión', description = 'Sabor callej
 
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   body {
-    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  .page-wrapper {
+    overflow-x: clip;
+    width: 100%;
   }
 
   ::selection {

@@ -55,6 +55,8 @@ const products = [
   .merch-grid .menu-card {
     width: calc(25% - 1.125rem);
     min-width: 250px;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .merch-grid .menu-card-image {
@@ -172,6 +174,7 @@ const products = [
   @media (max-width: 768px) {
     .merch-grid .menu-card {
       width: 100%;
+      min-width: 0;
     }
     .merch-grid .menu-card-image {
       height: 200px;
